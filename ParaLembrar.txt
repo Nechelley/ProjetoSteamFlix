@@ -1,3 +1,10 @@
 lembrar de colocar o preco do custo de adquirir o jogo do fornecedor, para mais tarde ser possivel saber quando um jogo passou a dar lucro.
 
 lembrar de na tela de cadastro de um jogo o administrador pode adicionar umas nova empresa ou escolher uma existe.
+
+lembrar que na hora de fechar uma compra o usuário pode pagar totalmente pela compra ou obter desconto através dos Stil points. Se o usuário pagar integralmente
+ele ganha mais Stil points proporcionais ao valor daquela compra. Se ele comprar com desconto, o desconto será dado de acordo com um cálculo pré-estabelecido.
+
+analisar se haverá interação com sistema bancário devido a geração de boletos.
+
+verificar se conseguimos fazer ou não exportação para pdf. Isso influencia na parte de geração de relatórios.
