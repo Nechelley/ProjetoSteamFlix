@@ -1,0 +1,3 @@
+lembrar de colocar o preco do custo de adquirir o jogo do fornecedor, para mais tarde ser possivel saber quando um jogo passou a dar lucro.
+
+lembrar de na tela de cadastro de um jogo o administrador pode adicionar umas nova empresa ou escolher uma existe.
