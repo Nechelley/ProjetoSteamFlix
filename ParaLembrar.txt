@@ -8,3 +8,5 @@ ele ganha mais Stil points proporcionais ao valor daquela compra. Se ele comprar
 analisar se haverá interação com sistema bancário devido a geração de boletos.
 
 verificar se conseguimos fazer ou não exportação para pdf. Isso influencia na parte de geração de relatórios.
+
+suporte na tela de ajuda
