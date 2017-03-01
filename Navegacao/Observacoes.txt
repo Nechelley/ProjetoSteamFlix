@@ -1,1 +1,0 @@
-Colorir a navegação para o MySpace porque precisa estar logado para entrar na tela do myspace.
