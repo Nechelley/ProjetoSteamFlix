@@ -6,12 +6,12 @@
 -->
 <html>
 	<head>
-		<title>Cadastro Usuario</title>
+		<title>Consulta Usuario</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="html5up-txt/assets/css/main.css" />
-		<link rel="stylesheet" href="html5up-txt/assets/css/styleTemplate.css" />
+		<link rel="stylesheet" href="../View/html5up-txt/assets/css/main.css" />
+		<link rel="stylesheet" href="../View/html5up-txt/assets/css/styleTemplate.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
 	<body class="homepage">
@@ -47,15 +47,18 @@
 
 								<!-- Highlight -->
 									<section class="box highlight">
-										<form action="../Controller/cadastrarUsuario.php" method="POST" enctype="multipart/form-data">
-											Primeiro Nome: <input type="text" name="pNome" maxlength="20" required="true"> <br/>
-											Segundo Nome: <input type="text" name="uNome" maxlength="20" required="true"> <br/>
-											Email: <input type="text" name="email" maxlength="45" required="true"> <br/>
-											Senha: <input type="password" name="senha" maxlength="100" required="true"> <br/>
-											Data de Nascimento: <input type="text" pattern="\d{1,2}/\d{1,2}/\d{4}"  name="dataNascimento" placeholder="dd/mm/aaaa" required="true"> <br/>
-											Fot de Perfil: <input type='file' name='img'/> <br/>
-											<input type="submit" value="Enviar">
-										</form>
+										<?php
+											for($i = 0;$i < $cont;$i++){
+												echo "Email: ".$email[$i]."<br>";
+												echo "Primeiro Nome: ".$pNome[$i]."<br>";
+												echo "SobreNome: ".$uNome[$i]."<br>";
+												echo "Foto: <img src=\"../Arquivos/FotosPerfil/".$foto[$i]."\" alt=\"User image\" width=\"50px\" height=\"50px\"><br>";
+												echo "Senha: ".$senha[$i]."<br>";
+												echo "Data de Nascimento: ".$dataNascimento[$i]."<br>";
+												echo "StilPoints: ".$stilPoints[$i];
+												echo "<br><br><br>";
+											}
+										?>
 									</section>
 
 							</div>
@@ -111,13 +114,13 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/skel-viewport.min.js"></script>
-			<script src="assets/js/util.js"></script>
+			<script src="../View/assets/js/jquery.min.js"></script>
+			<script src="../View/assets/js/jquery.dropotron.min.js"></script>
+			<script src="../View/assets/js/skel.min.js"></script>
+			<script src="../View/assets/js/skel-viewport.min.js"></script>
+			<script src="../View/assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
+			<script src="../View/assets/js/main.js"></script>
 
 	</body>
 </html>
