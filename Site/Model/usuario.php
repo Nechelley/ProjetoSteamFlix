@@ -1,12 +1,13 @@
 <?php
+include("pessoa.php");
 class Usuario extends Pessoa{
 	private $stilPoints;
 	private $comunidadesSeguidas;
 	private $produtos;
 
 	//construtor da classe
-	public function __construct($email,$pNome,$uNome,$fotoPerfil,$senha,$dataNascimento,$dataEntradaSistema,$stilPoints,$comunidadesSeguidas,$produtos){
-		parent::__construct($email,$pNome,$uNome,$fotoPerfil,$senha,$dataNascimento,$dataEntradaSistema);
+	public function __construct($email,$pNome,$uNome,$fotoPerfil,$senha,$dataNascimento,$stilPoints,$comunidadesSeguidas,$produtos){
+		parent::__construct($email,$pNome,$uNome,$fotoPerfil,$senha,$dataNascimento);
 		$this->stilPoints = $stilPoints;
 		$this->comunidadesSeguidas = $comunidadesSeguidas;
 		$this->produtos = $produtos;

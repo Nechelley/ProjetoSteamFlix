@@ -1,4 +1,5 @@
 <?php
+include("produto.php");
 class Jogo extends Produto{
 	private $descricao;
 	private $qtdJogadores;
