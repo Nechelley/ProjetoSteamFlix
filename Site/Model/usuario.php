@@ -62,7 +62,7 @@ class Usuario extends Pessoa{
 		}
 
 		for($i=$cont;$i<count($comunidadesSeguidas) -1;$i++){
-			$comunidadesSeguidas[$i] = $comunidadesSeguidas[$i+1]
+			$comunidadesSeguidas[$i] = $comunidadesSeguidas[$i+1];
 		}
 
 		pop($comunidadesSeguidas);

@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+ <!DOCTYPE HTML>
 <!--
 	TXT by HTML5 UP
 	html5up.net | @ajlkn
@@ -6,12 +6,12 @@
 -->
 <html>
 	<head>
-		<title>SteamFlix</title>
+		<title>Consulta Usuario</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="View/html5up-txt/assets/css/main.css" />
-		<link rel="stylesheet" href="View/html5up-txt/assets/css/styleTemplate.css" />
+		<link rel="stylesheet" href="../View/html5up-txt/assets/css/main.css" />
+		<link rel="stylesheet" href="../View/html5up-txt/assets/css/styleTemplate.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
 	<body class="homepage">
@@ -21,7 +21,7 @@
 				<header id="header">
 					<div class="logo container">
 						<div>
-							<h1><a href="index.php" id="logo"><img src="Arquivos/Images/logo.png" alt="SteamFlix" class="imglogo"></a></h1>
+							<h1><a href="index.php" id="logo"><img src="../Arquivos/Images/logo.png" alt="SteamFlix" class="imglogo"></a></h1>
 							<p>SteamFlix</p>
 						</div>
 					</div>
@@ -30,24 +30,42 @@
 			<!-- Nav -->
 				<nav id="nav">
 					<ul>
-						<li class="current"><a href="index.php">Home</a></li>						
-						<li><a href="View/telaFilmes.php">Filmes</a></li>
-						<li><a href="View/telaJogos.php">Jogos</a></li>
-						<li><a href="View/telaComunidades.php">Comunidades</a></li>
-						<li><a href="View/telaPerfil.php">Perfil</a></li>
-						<li><a href="View/telaMySpace.php">MySpace</a></li>
-						<li><a href="View/telaConsultaUsuario.php">ListarUsuarios</a></li>												
+						<li><a href="../index.php">Home</a></li>						
+						<li><a href="">Filmes</a></li>
+						<li><a href="">Jogos</a></li>
+						<li><a href="">Comunidades</a></li>
+						<li class="current"><a href="">Perfil</a></li>
+						<li><a href="">MySpace</a></li>
 					</ul>
 				</nav>
 
-			<!-- Banner -->
-				<div id="banner-wrapper">
-					<section id="banner">
-						<h2>Bem-Vindo ao SteamFlix</h2>
-						<p>Um site incrível onde você encontra todos os seus filmes e jogos prediletos</p>
-						<a href="View/telaCadastroUsuario.php" class="button">Cadastre-se</a>
-					</section>
+			<!-- Main -->
+				<div id="main-wrapper">
+					<div id="main" class="container">
+						<div class="row 200%">
+							<div class="12u">
+
+								<!-- Highlight -->
+									<section class="box highlight">
+										<?php
+											for($i = 0;$i < $cont;$i++){
+												echo "Email: ".$email[$i]."<br>";
+												echo "Primeiro Nome: ".$pNome[$i]."<br>";
+												echo "SobreNome: ".$uNome[$i]."<br>";
+												echo "Foto: <img src=\"../Arquivos/FotosPerfil/".$foto[$i]."\" alt=\"User image\" width=\"50px\" height=\"50px\"><br>";
+												echo "Senha: ".$senha[$i]."<br>";
+												echo "Data de Nascimento: ".$dataNascimento[$i]."<br>";
+												echo "StilPoints: ".$stilPoints[$i];
+												echo "<br><br><br>";
+											}
+										?>
+									</section>
+
+							</div>
+						</div>
+					</div>
 				</div>
+
 			<!-- Footer -->
 				<footer id="footer" class="container">
 					<div class="row 200%">
@@ -59,8 +77,8 @@
 									<p>
 										SteamFlix é <strong>a revolução</strong>, para os que curtem 
 										algum tipo de jogo e/ou filme e não querem ficar comprando
-										os produtos de um determinado personagem ou série em lugares diferentes. Aqui tudo isso pode ser feito em um único lugar
-										Aproveite e divirta-se :)
+										os produtos de um determinado peersonagem ou série em lugares diferentes. Aqui tudo isso pode ser feito em um único lugar
+										Apreveite e divirta-se :)
 									</p>
 								</section>
 
@@ -96,13 +114,13 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/skel-viewport.min.js"></script>
-			<script src="assets/js/util.js"></script>
+			<script src="../View/assets/js/jquery.min.js"></script>
+			<script src="../View/assets/js/jquery.dropotron.min.js"></script>
+			<script src="../View/assets/js/skel.min.js"></script>
+			<script src="../View/assets/js/skel-viewport.min.js"></script>
+			<script src="../View/assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
+			<script src="../View/assets/js/main.js"></script>
 
 	</body>
 </html>
