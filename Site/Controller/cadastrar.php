@@ -48,7 +48,7 @@
 		$erro .= '<br>Data inválido.';
 		$contErros++;
 	}
-	$dataNascimento = '$dia/$mes/$ano';
+	$dataNascimento = "'".$dia."/".$mes."/".$ano."'";
 
 	
 	$nome_imagem='no-image.jpg';
@@ -81,7 +81,7 @@
 
 	if($contErros == 0){
 		$usuario = new Usuario($email,$pNome,$uNome,$fotoPerfil,$senha,$dataNascimento,$stilPoints,$comunidadesSeguidas,$produtos);
-		$conexao = new Conexao("localhost","root","toyotaeenaruguto","SteamFlix");
+		$conexao = new Conexao("localhost","root","","SteamFlix");
 		$link = $conexao->conectar();
 
 		$usuariodao = new UsuarioDAO();

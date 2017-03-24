@@ -9,7 +9,7 @@ class Pessoa{
 	private $dataEntradaSistema;
 
 	//construtor da classe
-	public function __construct($email,$pNome,$uNome,$fotoPerfil,$senha,$dataNascimento,){
+	public function __construct($email,$pNome,$uNome,$fotoPerfil,$senha,$dataNascimento){
 		$this->email = $email;
 		$this->pNome = $pNome;
 		$this->uNome = $uNome;

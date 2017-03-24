@@ -1,11 +1,11 @@
 <?php
 class UsuarioDAO{
 	public function cadastrar($usuario,$link){
- 		$query = "call INSERIR_USUARIO('$usuario->getEmail()','$usuario->getPNome()',
- 			'$usuario->getUNome()', '$usuario->getSenha()',
- 			'$usuario->getDataNascimento()',$usuario->getStilPoints(),
- 			'$usuario->getFotoPerfil()');"; 
-		echo($query);
+ 		$query = "call INSERIR_USUARIO('".$usuario->getEmail()."','".$usuario->getPNome()."',
+ 			'".$usuario->getUNome()."', '".$usuario->getSenha()."',
+ 			".$usuario->getDataNascimento().",".$usuario->getStilPoints().",
+ 			'".$usuario->getFotoPerfil()."');"; 
+		echo($query)."<br>";
 		if(!mysqli_query($link, $query)) {
 			die('Não foi possível salvar: ' . mysqli_error($link));
 		}
