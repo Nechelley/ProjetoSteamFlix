@@ -53,6 +53,7 @@
 											Email: <input type="text" name="email" maxlength="45" required="true"> <br/>
 											Senha: <input type="password" name="senha" maxlength="100" required="true"> <br/>
 											Data de Nascimento: <input type="text" pattern="\d{1,2}/\d{1,2}/\d{4}"  name="dataNascimento" placeholder="dd/mm/aaaa" required="true"> <br/>
+											Fot de Perfil: <input type='file' name='img'/> <br/>
 											<input type="submit" value="Enviar">
 										</form>
 									</section>

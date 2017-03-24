@@ -44,7 +44,7 @@
 					<section id="banner">
 						<h2>Bem-Vindo ao StemFlix</h2>
 						<p>Um site incrível onde você encontra todos os seus filmes e jogos prediletos</p>
-						<a href="View/TelaCadastro.php" class="button">Cadastre-se</a>
+						<a href="View/TelaCadastroUsuario.php" class="button">Cadastre-se</a>
 					</section>
 				</div>
 
@@ -257,8 +257,8 @@
 									<p>
 										SteamFlix é <strong>a revolução</strong>, para os que curtem 
 										algum tipo de jogo e/ou filme e não querem ficar comprando
-										os produtos de um determinado personagem ou série em lugares diferentes. Aqui tudo isso pode ser feito em um único lugar
-										Aproveite e divirta-se :)
+										os produtos de um determinado peersonagem ou série em lugares diferentes. Aqui tudo isso pode ser feito em um único lugar
+										Apreveite e divirta-se :)
 									</p>
 								</section>
 
