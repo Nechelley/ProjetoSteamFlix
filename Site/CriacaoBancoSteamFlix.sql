@@ -8,19 +8,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema SteamFlix
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema SteamFlix
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `SteamFlix` DEFAULT CHARACTER SET utf8 ;
+USE `SteamFlix` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`USUARIO_COMUM`
+-- Table `SteamFlix`.`USUARIO_COMUM`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`USUARIO_COMUM` (
+CREATE TABLE IF NOT EXISTS `SteamFlix`.`USUARIO_COMUM` (
   `Email` VARCHAR(45) NOT NULL,
   `Pnome` VARCHAR(20) NOT NULL,
   `Unome` VARCHAR(20) NOT NULL,
@@ -35,9 +35,9 @@ COMMENT = '						';
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`ADMINISTRADOR`
+-- Table `SteamFlix`.`ADMINISTRADOR`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`ADMINISTRADOR` (
+CREATE TABLE IF NOT EXISTS `SteamFlix`.`ADMINISTRADOR` (
   `Email` VARCHAR(45) NOT NULL,
   `Pnome` VARCHAR(20) NOT NULL,
   `Unome` VARCHAR(20) NOT NULL,
@@ -55,9 +55,9 @@ COMMENT = '						';
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`RELATORIO`
+-- Table `SteamFlix`.`RELATORIO`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`RELATORIO` (
+CREATE TABLE IF NOT EXISTS `SteamFlix`.`RELATORIO` (
   `Data` DATETIME NOT NULL,
   `NumComprasEfetuadas` BIGINT(11) UNSIGNED NOT NULL,
   `DespesaBruta` FLOAT(10,2) UNSIGNED NOT NULL,
@@ -73,9 +73,9 @@ COMMENT = '		';
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`COMUNIDADE`
+-- Table `SteamFlix`.`COMUNIDADE`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`COMUNIDADE` (
+CREATE TABLE IF NOT EXISTS `SteamFlix`.`COMUNIDADE` (
   `Nome` VARCHAR(45) NOT NULL,
   `ClassificacaoEtaria` TINYINT UNSIGNED NOT NULL,
   `Genero` VARCHAR(45) NOT NULL,
@@ -86,16 +86,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`COMUNIDADE` (
   INDEX `fk_COMUNIDADE_USUARIO_COMUM1_idx` (`USUARIO_COMUM_Email` ASC),
   CONSTRAINT `fk_COMUNIDADE_USUARIO_COMUM1`
     FOREIGN KEY (`USUARIO_COMUM_Email`)
-    REFERENCES `mydb`.`USUARIO_COMUM` (`Email`)
+    REFERENCES `SteamFlix`.`USUARIO_COMUM` (`Email`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`FORNECEDOR`
+-- Table `SteamFlix`.`FORNECEDOR`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`FORNECEDOR` (
+CREATE TABLE IF NOT EXISTS `SteamFlix`.`FORNECEDOR` (
   `Nome` VARCHAR(45) NOT NULL,
   `Email` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`Nome`))
@@ -103,9 +103,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`JOGO`
+-- Table `SteamFlix`.`JOGO`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`JOGO` (
+CREATE TABLE IF NOT EXISTS `SteamFlix`.`JOGO` (
   `CodigoJogo` INT UNSIGNED NOT NULL,
   `QtdVendida` INT UNSIGNED NOT NULL,
   `NotaUsuario` TINYINT UNSIGNED NULL,
@@ -130,21 +130,21 @@ CREATE TABLE IF NOT EXISTS `mydb`.`JOGO` (
   INDEX `fk_JOGO_ADMINISTRADOR1_idx` (`ADMINISTRADOR_Email` ASC),
   CONSTRAINT `fk_JOGO_FORNECEDOR1`
     FOREIGN KEY (`FORNECEDOR_Nome`)
-    REFERENCES `mydb`.`FORNECEDOR` (`Nome`)
+    REFERENCES `SteamFlix`.`FORNECEDOR` (`Nome`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_JOGO_ADMINISTRADOR1`
     FOREIGN KEY (`ADMINISTRADOR_Email`)
-    REFERENCES `mydb`.`ADMINISTRADOR` (`Email`)
+    REFERENCES `SteamFlix`.`ADMINISTRADOR` (`Email`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`FILME`
+-- Table `SteamFlix`.`FILME`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`FILME` (
+CREATE TABLE IF NOT EXISTS `SteamFlix`.`FILME` (
   `CodigoFilme` INT UNSIGNED NOT NULL,
   `QtdVendida` INT UNSIGNED NOT NULL,
   `ClassificacaoEtaria` TINYINT UNSIGNED NOT NULL,
@@ -167,67 +167,67 @@ CREATE TABLE IF NOT EXISTS `mydb`.`FILME` (
   INDEX `fk_FILME_ADMINISTRADOR1_idx` (`ADMINISTRADOR_Email` ASC),
   CONSTRAINT `fk_FILME_FORNECEDOR1`
     FOREIGN KEY (`FORNECEDOR_Nome`)
-    REFERENCES `mydb`.`FORNECEDOR` (`Nome`)
+    REFERENCES `SteamFlix`.`FORNECEDOR` (`Nome`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_FILME_JOGO1`
     FOREIGN KEY (`JOGO_CodigoJogo`)
-    REFERENCES `mydb`.`JOGO` (`CodigoJogo`)
+    REFERENCES `SteamFlix`.`JOGO` (`CodigoJogo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_FILME_ADMINISTRADOR1`
     FOREIGN KEY (`ADMINISTRADOR_Email`)
-    REFERENCES `mydb`.`ADMINISTRADOR` (`Email`)
+    REFERENCES `SteamFlix`.`ADMINISTRADOR` (`Email`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`IMAGENS_FILME`
+-- Table `SteamFlix`.`IMAGENS_FILME`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`IMAGENS_FILME` (
+CREATE TABLE IF NOT EXISTS `SteamFlix`.`IMAGENS_FILME` (
   `CaminhoImagem` VARCHAR(100) NOT NULL,
   `FILME_CodigoFilme` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`CaminhoImagem`, `FILME_CodigoFilme`),
   INDEX `fk_IMAGENS_FILME_FILME1_idx` (`FILME_CodigoFilme` ASC),
   CONSTRAINT `fk_IMAGENS_FILME_FILME1`
     FOREIGN KEY (`FILME_CodigoFilme`)
-    REFERENCES `mydb`.`FILME` (`CodigoFilme`)
+    REFERENCES `SteamFlix`.`FILME` (`CodigoFilme`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`IMAGENS_JOGO`
+-- Table `SteamFlix`.`IMAGENS_JOGO`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`IMAGENS_JOGO` (
+CREATE TABLE IF NOT EXISTS `SteamFlix`.`IMAGENS_JOGO` (
   `CaminhoImagem` VARCHAR(100) NOT NULL,
   `JOGO_CodigoJogo` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`CaminhoImagem`, `JOGO_CodigoJogo`),
   INDEX `fk_IMAGENS_JOGO_JOGO1_idx` (`JOGO_CodigoJogo` ASC),
   CONSTRAINT `fk_IMAGENS_JOGO_JOGO1`
     FOREIGN KEY (`JOGO_CodigoJogo`)
-    REFERENCES `mydb`.`JOGO` (`CodigoJogo`)
+    REFERENCES `SteamFlix`.`JOGO` (`CodigoJogo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`COMENTARIO`
+-- Table `SteamFlix`.`COMENTARIO`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`COMENTARIO` (
+CREATE TABLE IF NOT EXISTS `SteamFlix`.`COMENTARIO` (
   `ID` INT NOT NULL,
   PRIMARY KEY (`ID`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`COMENTARIO_COMUNIDADE`
+-- Table `SteamFlix`.`COMENTARIO_COMUNIDADE`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`COMENTARIO_COMUNIDADE` (
+CREATE TABLE IF NOT EXISTS `SteamFlix`.`COMENTARIO_COMUNIDADE` (
   `COMENTARIO_ID` INT NOT NULL,
   `COMUNIDADE_Nome` VARCHAR(45) NOT NULL,
   `USUARIO_COMUM_Email` VARCHAR(45) NOT NULL,
@@ -238,26 +238,26 @@ CREATE TABLE IF NOT EXISTS `mydb`.`COMENTARIO_COMUNIDADE` (
   INDEX `fk_COMENTARIO_COMUNIDADE_COMENTARIO1_idx` (`COMENTARIO_ID` ASC),
   CONSTRAINT `fk_COMUNIDADE_has_USUARIO_COMUM_COMUNIDADE1`
     FOREIGN KEY (`COMUNIDADE_Nome`)
-    REFERENCES `mydb`.`COMUNIDADE` (`Nome`)
+    REFERENCES `SteamFlix`.`COMUNIDADE` (`Nome`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_COMUNIDADE_has_USUARIO_COMUM_USUARIO_COMUM1`
     FOREIGN KEY (`USUARIO_COMUM_Email`)
-    REFERENCES `mydb`.`USUARIO_COMUM` (`Email`)
+    REFERENCES `SteamFlix`.`USUARIO_COMUM` (`Email`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_COMENTARIO_COMUNIDADE_COMENTARIO1`
     FOREIGN KEY (`COMENTARIO_ID`)
-    REFERENCES `mydb`.`COMENTARIO` (`ID`)
+    REFERENCES `SteamFlix`.`COMENTARIO` (`ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`COMENTARIO_FILME`
+-- Table `SteamFlix`.`COMENTARIO_FILME`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`COMENTARIO_FILME` (
+CREATE TABLE IF NOT EXISTS `SteamFlix`.`COMENTARIO_FILME` (
   `COMENTARIO_ID` INT NOT NULL,
   `FILME_CodigoFilme` INT UNSIGNED NOT NULL,
   `USUARIO_COMUM_Email` VARCHAR(45) NOT NULL,
@@ -268,26 +268,26 @@ CREATE TABLE IF NOT EXISTS `mydb`.`COMENTARIO_FILME` (
   INDEX `fk_COMENTARIO_FILME_COMENTARIO1_idx` (`COMENTARIO_ID` ASC),
   CONSTRAINT `fk_FILME_has_USUARIO_COMUM_FILME1`
     FOREIGN KEY (`FILME_CodigoFilme`)
-    REFERENCES `mydb`.`FILME` (`CodigoFilme`)
+    REFERENCES `SteamFlix`.`FILME` (`CodigoFilme`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_FILME_has_USUARIO_COMUM_USUARIO_COMUM1`
     FOREIGN KEY (`USUARIO_COMUM_Email`)
-    REFERENCES `mydb`.`USUARIO_COMUM` (`Email`)
+    REFERENCES `SteamFlix`.`USUARIO_COMUM` (`Email`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_COMENTARIO_FILME_COMENTARIO1`
     FOREIGN KEY (`COMENTARIO_ID`)
-    REFERENCES `mydb`.`COMENTARIO` (`ID`)
+    REFERENCES `SteamFlix`.`COMENTARIO` (`ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`COMENTARIO_JOGO`
+-- Table `SteamFlix`.`COMENTARIO_JOGO`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`COMENTARIO_JOGO` (
+CREATE TABLE IF NOT EXISTS `SteamFlix`.`COMENTARIO_JOGO` (
   `COMENTARIO_ID` INT NOT NULL,
   `JOGO_CodigoJogo` INT UNSIGNED NOT NULL,
   `USUARIO_COMUM_Email` VARCHAR(45) NOT NULL,
@@ -298,26 +298,26 @@ CREATE TABLE IF NOT EXISTS `mydb`.`COMENTARIO_JOGO` (
   INDEX `fk_COMENTARIO_JOGO_COMENTARIO1_idx` (`COMENTARIO_ID` ASC),
   CONSTRAINT `fk_JOGO_has_USUARIO_COMUM_JOGO1`
     FOREIGN KEY (`JOGO_CodigoJogo`)
-    REFERENCES `mydb`.`JOGO` (`CodigoJogo`)
+    REFERENCES `SteamFlix`.`JOGO` (`CodigoJogo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_JOGO_has_USUARIO_COMUM_USUARIO_COMUM1`
     FOREIGN KEY (`USUARIO_COMUM_Email`)
-    REFERENCES `mydb`.`USUARIO_COMUM` (`Email`)
+    REFERENCES `SteamFlix`.`USUARIO_COMUM` (`Email`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_COMENTARIO_JOGO_COMENTARIO1`
     FOREIGN KEY (`COMENTARIO_ID`)
-    REFERENCES `mydb`.`COMENTARIO` (`ID`)
+    REFERENCES `SteamFlix`.`COMENTARIO` (`ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`SEGUE`
+-- Table `SteamFlix`.`SEGUE`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`SEGUE` (
+CREATE TABLE IF NOT EXISTS `SteamFlix`.`SEGUE` (
   `COMUNIDADE_Nome` VARCHAR(45) NOT NULL,
   `USUARIO_COMUM_Email` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`COMUNIDADE_Nome`, `USUARIO_COMUM_Email`),
@@ -325,21 +325,21 @@ CREATE TABLE IF NOT EXISTS `mydb`.`SEGUE` (
   INDEX `fk_COMUNIDADE_has_USUARIO_COMUM_COMUNIDADE2_idx` (`COMUNIDADE_Nome` ASC),
   CONSTRAINT `fk_COMUNIDADE_has_USUARIO_COMUM_COMUNIDADE2`
     FOREIGN KEY (`COMUNIDADE_Nome`)
-    REFERENCES `mydb`.`COMUNIDADE` (`Nome`)
+    REFERENCES `SteamFlix`.`COMUNIDADE` (`Nome`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_COMUNIDADE_has_USUARIO_COMUM_USUARIO_COMUM2`
     FOREIGN KEY (`USUARIO_COMUM_Email`)
-    REFERENCES `mydb`.`USUARIO_COMUM` (`Email`)
+    REFERENCES `SteamFlix`.`USUARIO_COMUM` (`Email`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`COMPRA_FILMES`
+-- Table `SteamFlix`.`COMPRA_FILMES`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`COMPRA_FILMES` (
+CREATE TABLE IF NOT EXISTS `SteamFlix`.`COMPRA_FILMES` (
   `FILME_CodigoFilme` INT UNSIGNED NOT NULL,
   `USUARIO_COMUM_Email` VARCHAR(45) NOT NULL,
   `Data` DATE NOT NULL,
@@ -348,21 +348,21 @@ CREATE TABLE IF NOT EXISTS `mydb`.`COMPRA_FILMES` (
   INDEX `fk_FILME_has_USUARIO_COMUM_FILME2_idx` (`FILME_CodigoFilme` ASC),
   CONSTRAINT `fk_FILME_has_USUARIO_COMUM_FILME2`
     FOREIGN KEY (`FILME_CodigoFilme`)
-    REFERENCES `mydb`.`FILME` (`CodigoFilme`)
+    REFERENCES `SteamFlix`.`FILME` (`CodigoFilme`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_FILME_has_USUARIO_COMUM_USUARIO_COMUM2`
     FOREIGN KEY (`USUARIO_COMUM_Email`)
-    REFERENCES `mydb`.`USUARIO_COMUM` (`Email`)
+    REFERENCES `SteamFlix`.`USUARIO_COMUM` (`Email`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`COMPRA_JOGO`
+-- Table `SteamFlix`.`COMPRA_JOGO`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`COMPRA_JOGO` (
+CREATE TABLE IF NOT EXISTS `SteamFlix`.`COMPRA_JOGO` (
   `JOGO_CodigoJogo` INT UNSIGNED NOT NULL,
   `USUARIO_COMUM_Email` VARCHAR(45) NOT NULL,
   `Data` DATE NOT NULL,
@@ -371,21 +371,21 @@ CREATE TABLE IF NOT EXISTS `mydb`.`COMPRA_JOGO` (
   INDEX `fk_JOGO_has_USUARIO_COMUM_JOGO2_idx` (`JOGO_CodigoJogo` ASC),
   CONSTRAINT `fk_JOGO_has_USUARIO_COMUM_JOGO2`
     FOREIGN KEY (`JOGO_CodigoJogo`)
-    REFERENCES `mydb`.`JOGO` (`CodigoJogo`)
+    REFERENCES `SteamFlix`.`JOGO` (`CodigoJogo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_JOGO_has_USUARIO_COMUM_USUARIO_COMUM2`
     FOREIGN KEY (`USUARIO_COMUM_Email`)
-    REFERENCES `mydb`.`USUARIO_COMUM` (`Email`)
+    REFERENCES `SteamFlix`.`USUARIO_COMUM` (`Email`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`RELATORIO_TEM_JOGO`
+-- Table `SteamFlix`.`RELATORIO_TEM_JOGO`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`RELATORIO_TEM_JOGO` (
+CREATE TABLE IF NOT EXISTS `SteamFlix`.`RELATORIO_TEM_JOGO` (
   `RELATORIO_Data` DATETIME NOT NULL,
   `JOGO_CodigoJogo` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`RELATORIO_Data`, `JOGO_CodigoJogo`),
@@ -393,21 +393,21 @@ CREATE TABLE IF NOT EXISTS `mydb`.`RELATORIO_TEM_JOGO` (
   INDEX `fk_RELATORIO_has_JOGO_RELATORIO1_idx` (`RELATORIO_Data` ASC),
   CONSTRAINT `fk_RELATORIO_has_JOGO_RELATORIO1`
     FOREIGN KEY (`RELATORIO_Data`)
-    REFERENCES `mydb`.`RELATORIO` (`Data`)
+    REFERENCES `SteamFlix`.`RELATORIO` (`Data`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_RELATORIO_has_JOGO_JOGO1`
     FOREIGN KEY (`JOGO_CodigoJogo`)
-    REFERENCES `mydb`.`JOGO` (`CodigoJogo`)
+    REFERENCES `SteamFlix`.`JOGO` (`CodigoJogo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`RELATORIO_TEM_FILME`
+-- Table `SteamFlix`.`RELATORIO_TEM_FILME`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`RELATORIO_TEM_FILME` (
+CREATE TABLE IF NOT EXISTS `SteamFlix`.`RELATORIO_TEM_FILME` (
   `RELATORIO_Data` DATETIME NOT NULL,
   `FILME_CodigoFilme` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`RELATORIO_Data`, `FILME_CodigoFilme`),
@@ -415,37 +415,37 @@ CREATE TABLE IF NOT EXISTS `mydb`.`RELATORIO_TEM_FILME` (
   INDEX `fk_RELATORIO_has_FILME_RELATORIO1_idx` (`RELATORIO_Data` ASC),
   CONSTRAINT `fk_RELATORIO_has_FILME_RELATORIO1`
     FOREIGN KEY (`RELATORIO_Data`)
-    REFERENCES `mydb`.`RELATORIO` (`Data`)
+    REFERENCES `SteamFlix`.`RELATORIO` (`Data`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_RELATORIO_has_FILME_FILME1`
     FOREIGN KEY (`FILME_CodigoFilme`)
-    REFERENCES `mydb`.`FILME` (`CodigoFilme`)
+    REFERENCES `SteamFlix`.`FILME` (`CodigoFilme`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`IMAGENS_COMUNIDADE`
+-- Table `SteamFlix`.`IMAGENS_COMUNIDADE`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`IMAGENS_COMUNIDADE` (
+CREATE TABLE IF NOT EXISTS `SteamFlix`.`IMAGENS_COMUNIDADE` (
   `CaminhoImagem` VARCHAR(100) NOT NULL,
   `COMUNIDADE_Nome` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`CaminhoImagem`, `COMUNIDADE_Nome`),
   INDEX `fk_IMAGENS_COMUNIDADE_COMUNIDADE1_idx` (`COMUNIDADE_Nome` ASC),
   CONSTRAINT `fk_IMAGENS_COMUNIDADE_COMUNIDADE1`
     FOREIGN KEY (`COMUNIDADE_Nome`)
-    REFERENCES `mydb`.`COMUNIDADE` (`Nome`)
+    REFERENCES `SteamFlix`.`COMUNIDADE` (`Nome`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`NOTAS_FILME`
+-- Table `SteamFlix`.`NOTAS_FILME`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`NOTAS_FILME` (
+CREATE TABLE IF NOT EXISTS `SteamFlix`.`NOTAS_FILME` (
   `Nota` TINYINT UNSIGNED NOT NULL,
   `FILME_CodigoFilme` INT UNSIGNED NOT NULL,
   `USUARIO_COMUM_Email` VARCHAR(45) NOT NULL,
@@ -453,21 +453,21 @@ CREATE TABLE IF NOT EXISTS `mydb`.`NOTAS_FILME` (
   INDEX `fk_NOTAS_FILME_USUARIO_COMUM1_idx` (`USUARIO_COMUM_Email` ASC),
   CONSTRAINT `fk_NOTAS_FILME_FILME1`
     FOREIGN KEY (`FILME_CodigoFilme`)
-    REFERENCES `mydb`.`FILME` (`CodigoFilme`)
+    REFERENCES `SteamFlix`.`FILME` (`CodigoFilme`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_NOTAS_FILME_USUARIO_COMUM1`
     FOREIGN KEY (`USUARIO_COMUM_Email`)
-    REFERENCES `mydb`.`USUARIO_COMUM` (`Email`)
+    REFERENCES `SteamFlix`.`USUARIO_COMUM` (`Email`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`NOTAS_JOGOS`
+-- Table `SteamFlix`.`NOTAS_JOGOS`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`NOTAS_JOGOS` (
+CREATE TABLE IF NOT EXISTS `SteamFlix`.`NOTAS_JOGOS` (
   `Nota` TINYINT UNSIGNED NOT NULL,
   `JOGO_CodigoJogo` INT UNSIGNED NOT NULL,
   `USUARIO_COMUM_Email` VARCHAR(45) NOT NULL,
@@ -475,12 +475,12 @@ CREATE TABLE IF NOT EXISTS `mydb`.`NOTAS_JOGOS` (
   INDEX `fk_NOTAS_JOGOS_USUARIO_COMUM1_idx` (`USUARIO_COMUM_Email` ASC),
   CONSTRAINT `fk_NOTAS_JOGOS_JOGO1`
     FOREIGN KEY (`JOGO_CodigoJogo`)
-    REFERENCES `mydb`.`JOGO` (`CodigoJogo`)
+    REFERENCES `SteamFlix`.`JOGO` (`CodigoJogo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_NOTAS_JOGOS_USUARIO_COMUM1`
     FOREIGN KEY (`USUARIO_COMUM_Email`)
-    REFERENCES `mydb`.`USUARIO_COMUM` (`Email`)
+    REFERENCES `SteamFlix`.`USUARIO_COMUM` (`Email`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

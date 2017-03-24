@@ -16,9 +16,10 @@
     <body>
         <div class="container-fluid">
             <header class="row">
+            	<img class="logo" src="Arquivos/Images/logo.png" alt="SteamFlix">
                 <h1 class="mytext">SteamFlix</h1>
-                <div class="menubar">
-					<nav class="navbar-fixed-top">						
+                <div class="col-md-8">
+					<nav class="menuPrin">						
 						<ul>
 							<li><a href="#">Home</a></li>
 							<li><a href="#">Filmes</a></li>
@@ -28,11 +29,13 @@
 						    <li><a href="#">MySpace</a></li>
 						</ul>
 					</nav>
+				</div>
+				<div class="col-md-4">
 	                <form class="form-search">
 	                    <input type="text" class="input-medium search-query" placeholder="O que você procura?">
 	                    <button type="submit" class="btn">Buscar</button>
-	                </form>
-                </div>
+	                </form>                
+	            </div>
             </header>
             <div class="row">
                 <div role="main">
