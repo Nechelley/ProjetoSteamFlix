@@ -16,7 +16,7 @@ class Pessoa{
 		$this->fotoPerfil = $fotoPerfil;
 		$this->senha = $senha;
 		$this->dataNascimento = $dataNascimento;
-		$this->dataEntradaSistema = 'Nada...';
+		$this->dataEntradaSistema = NULL;
 	}
 
 	public function getEmail(){

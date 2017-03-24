@@ -1,17 +1,17 @@
 <?php
 class UsuarioDAO{
 	public function cadastrar($usuario,$link){
- 		$query = "call INSERIR_USUARIO('".$usuario->getEmail()."','".$usuario->getPNome()."',
+ 		$query = "call INSERIR_USUARIO(
+ 			'".$usuario->getEmail()."','".$usuario->getPNome()."',
  			'".$usuario->getUNome()."', '".$usuario->getSenha()."',
  			".$usuario->getDataNascimento().",".$usuario->getStilPoints().",
  			'".$usuario->getFotoPerfil()."');"; 
 		if(!mysqli_query($link, $query)) {
 			die('Não foi possível salvar: ' . mysqli_error($link));
 		}
-		echo 'Salvar bem sucedido';
 	}
 
-	public function consultar($link){			
+	public function consultarTd($link){			
 		$query = "SELECT * FROM USUARIO_COMUM;"; 
 		$result = mysqli_query($link,$query);
 		if (!$result) {
@@ -20,7 +20,7 @@ class UsuarioDAO{
 		return $result;
 	}
 
-	public function consultarUm($email,$link){			
+	public function consultar($email,$link){			
 		$query = "SELECT * FROM USUARIO_COMUM WHERE Email = '".$email."';"; 
 		$result = mysqli_query($link,$query);
 		if (!$result) {

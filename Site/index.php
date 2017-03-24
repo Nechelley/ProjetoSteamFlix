@@ -42,7 +42,7 @@
 			<!-- Banner -->
 				<div id="banner-wrapper">
 					<section id="banner">
-						<h2>Bem-Vindo ao StemFlix</h2>
+						<h2>Bem-Vindo ao TESTE: <?php include_once ("/Controller/verificaLogado.php");echo $email;?> StemFlix</h2>
 						<p>Um site incrível onde você encontra todos os seus filmes e jogos prediletos</p>
 						<a href="View/TelaCadastroUsuario.php" class="button">Cadastre-se</a>
 					</section>

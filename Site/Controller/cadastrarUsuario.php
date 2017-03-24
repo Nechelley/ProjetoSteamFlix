@@ -1,7 +1,13 @@
-<?php	
-	include("../Model/usuario.php");
-	include("../Persist/conexao.php");
-	include("../Persist/usuarioDAO.php");
+<?php
+	include_once("verificarLogado.php");
+	if($nivelAcesso != -1){
+		//redireciono
+	    header("Location: ../index.php");
+	}
+
+	include_once("../Model/usuario.php");
+	include_once("../Persist/conexao.php");
+	include_once("../Persist/usuarioDAO.php");
 
 	$email = $_POST["email"];
 	$pNome = $_POST["pNome"];
@@ -10,26 +16,25 @@
 	$senha = $_POST["senha"];
 	$dataNascimento = $_POST["dataNascimento"];
 	$stilPoints = 0;
-	$comunidadesSeguidas = 'Nada...';
-	$produtos = 'Nada...';
 	
-	$erro = '';
 	$contErros = 0;
+	$erro[$contErros] = 'Erros:<br>';
+	
 
 	if(strlen($email) < 0 || strlen($email) > 45){
-		$erro .= '<br>Email inválido.';
+		$erro[$contErros] = 'Email inválido.';
 		$contErros++;
 	}
 	if(strlen($pNome) < 0 || strlen($pNome) > 20){
-		$erro .= '<br>Primeiro nome inválido.';
+		$erro[$contErros] = 'Primeiro nome inválido.';
 		$contErros++;
 	}
 	if(strlen($uNome) < 0 || strlen($uNome) > 20){
-		$erro .= '<br>Sobrenome inválido.';
+		$erro[$contErros] = 'Sobrenome inválido.';
 		$contErros++;
 	}
 	if(strlen($senha) < 0 || strlen($senha) > 100){
-		$erro .= '<br>Senha inválido.';
+		$erro[$contErros] = 'Senha inválida.';
 		$contErros++;
 	}
 	//garantindo data de nascimento valida
@@ -37,32 +42,32 @@
 	$mes = substr($dataNascimento, 3,2);
 	$ano = substr($dataNascimento, 6,4);
 	if($dia < 0 || $dia > 31){
-		$erro .= '<br>Data inválido.';
+		$erro[$contErros] = 'Data inválida.';
 		$contErros++;
 	}
 	else if($mes < 0 || $mes > 12){
-		$erro .= '<br>Data inválido.';
+		$erro[$contErros] = 'Data inválida.';
 		$contErros++;
 	}
 	else if($ano < 0 || $ano > 2017){
-		$erro .= '<br>Data inválido.';
+		$erro[$contErros] = 'Data inválida.';
 		$contErros++;
 	}
 	$dataNascimento = "'".$dia."/".$mes."/".$ano."'";
 
 	
-	$nome_imagem='no-image.jpg';
+	$nome_imagem='noimage.png';
 	//testando se há arquivo
 	if(!empty($foto['name'])){
 		//tamanho
 		$tamanho = 3000000;
 		//verifica se o arquivo é uma imagem
 		if(!preg_match('/^image\/(pjpeg|jpeg|png|gif|bmp)$/',$foto['type'])){
-			$erro .= '<br>Isso não é imagem.';
+			$erro[$contErros] = 'Isso não é uma imagem.';
 			$contErros++;
 		}
 		if($foto['size']>$tamanho){
-			$erro .= '<br>A imagem tem q ter no máximo 3MB.';
+			$erro[$contErros] = 'A imagem tem que ter no máximo 3MB.';
 			$contErros++;
 		}
 		//Se nao houver erro
@@ -71,7 +76,6 @@
 			preg_match('/\.(gif|bmp|png|jpg|jpeg){1}$/i',$foto['name'], $ext);
 			//gera nome da imagem
 			$nome_imagem = time()."_".rand(1,50000).".".$ext[1];
-			$fotoPerfil = $nome_imagem;
 			//caminho
 			$caminho_imagem = "../Arquivos/FotosPerfil/".$nome_imagem;
 			//Faz upload
@@ -80,17 +84,29 @@
 	}
 
 	if($contErros == 0){
-		$usuario = new Usuario($email,$pNome,$uNome,$fotoPerfil,$senha,$dataNascimento,$stilPoints,$comunidadesSeguidas,$produtos);
+		//cria o usuario
+		$usuario = new Usuario($email,$pNome,$uNome,$nome_imagem,$senha,$dataNascimento,$stilPoints);
+		//conecta
 		$conexao = new Conexao("localhost","root","","SteamFlix");
 		$link = $conexao->conectar();
 
+		//cria o dao e salva
 		$usuariodao = new UsuarioDAO();
 		$usuariodao->cadastrar($usuario,$link);
-		echo "<h1>OK</h1>";
+
+		//seto session
+		session_start();
+        $_SESSION['email'] = $email;
+        $_SESSION['nivelAcesso'] = 0;
+
+        //redireciono
+        header("Location: ../index.php");
 	}
 	else{
 		//houve algum erro
-		echo $erro;
+		foreach ($erro as $e) {
+			echo $r."<br>";
+		}
 	}
 	
 	$conexao->fechar();

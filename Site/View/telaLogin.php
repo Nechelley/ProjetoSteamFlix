@@ -1,11 +1,3 @@
- <?php
- include_once("verificarLogado.php");
-	if($nivelAcesso != -1){
-		//redireciono
-	    header("Location: ../index.php");
-	}
-?>
-
  <!DOCTYPE HTML>
 <!--
 	TXT by HTML5 UP
@@ -14,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Cadastro Usuario</title>
+		<title>Login</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -55,13 +47,9 @@
 
 								<!-- Highlight -->
 									<section class="box highlight">
-										<form action="../Controller/cadastrarUsuario.php" method="POST" enctype="multipart/form-data">
-											Primeiro Nome: <input type="text" name="pNome" maxlength="20" required="true"> <br/>
-											Segundo Nome: <input type="text" name="uNome" maxlength="20" required="true"> <br/>
+										<form action="../Controller/logar.php" method="POST">
 											Email: <input type="text" name="email" maxlength="45" required="true"> <br/>
 											Senha: <input type="password" name="senha" maxlength="100" required="true"> <br/>
-											Data de Nascimento: <input type="text" pattern="\d{1,2}/\d{1,2}/\d{4}"  name="dataNascimento" placeholder="dd/mm/aaaa" required="true"> <br/>
-											Foto de Perfil: <input type='file' name='img'/> <br/>
 											<input type="submit" value="Enviar">
 										</form>
 									</section>
