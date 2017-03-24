@@ -351,7 +351,7 @@
 					<section id="banner">
 						<h2>Bem-Vindo ao StemFlix</h2>
 						<p>Um site incrível onde você encontra todos os seus filmes e jogos prediletos</p>
-						<a href="View/TelaCadastro.php" class="button">Cadastre-se</a>
+						<a href="View/TelaCadastroUsuario.php" class="button">Cadastre-se</a>
 					</section>
 				</div>
 
