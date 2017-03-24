@@ -20,8 +20,17 @@ class UsuarioDAO{
 		return $result;
 	}
 
+	public function consultarUm($email,$link){			
+		$query = "SELECT * FROM USUARIO_COMUM WHERE Email = '".$email."';"; 
+		$result = mysqli_query($link,$query);
+		if (!$result) {
+		    die("Não foi possível consultar: ".mysqli_error($link));
+		}					
+		return $result;
+	}
+
 	public function alterar($usuario,$link){			
-		$query = "call ATT_USUARIO('".$usuario->getEmail()."','".$usuario->getPNome()."',
+		$query = "call ATT_USER('".$usuario->getEmail()."','".$usuario->getPNome()."',
  			'".$usuario->getUNome()."', '".$usuario->getSenha()."',
  			".$usuario->getDataNascimento().",".$usuario->getStilPoints().",
  			'".$usuario->getFotoPerfil()."');"; 

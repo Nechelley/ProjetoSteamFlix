@@ -1,4 +1,4 @@
-x<?php	
+<?php	
 	include("../Model/usuario.php");
 	include("../Persist/conexao.php");
 	include("../Persist/usuarioDAO.php");
