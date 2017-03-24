@@ -11,7 +11,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="html5up-txt/assets/css/main.css" />
-		<link rel="stylesheet" href="html5up-txt/assets/css/styleTemplate.css" />
+		<link rel="stylesheet" href="html5up-txt/assets/css/styleTemplate.css" />		
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
 	<body class="homepage">
@@ -31,11 +31,11 @@
 				<nav id="nav">
 					<ul>
 						<li><a href="../index.php">Home</a></li>						
-						<li><a href="">Filmes</a></li>
-						<li><a href="">Jogos</a></li>
-						<li><a href="">Comunidades</a></li>
-						<li class="current"><a href="">Perfil</a></li>
-						<li><a href="">MySpace</a></li>
+						<li><a href="telaFilmes.php">Filmes</a></li>
+						<li><a href="telaJogos.php">Jogos</a></li>
+						<li><a href="telaComunidades.php">Comunidades</a></li>
+						<li class="current"><a href="#">Perfil</a></li>
+						<li><a href="telaMySpace.php">MySpace</a></li>
 					</ul>
 				</nav>
 
@@ -47,7 +47,8 @@
 
 								<!-- Highlight -->
 									<section class="box highlight">
-										<form action="../Controller/cadastrar.php" method="POST" enctype="multipart/form-data">
+										<h1>Cadastro</h1>
+										<form action="../Controller/cadastrar.php" method="POST" enctype="multipart/form-data" class="formulario">
 											Primeiro Nome: <input type="text" name="pNome" maxlength="20" required="true"> <br/>
 											Segundo Nome: <input type="text" name="uNome" maxlength="20" required="true"> <br/>
 											Email: <input type="text" name="email" maxlength="45" required="true"> <br/>
