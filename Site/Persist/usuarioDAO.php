@@ -11,15 +11,6 @@ class UsuarioDAO{
 		}
 	}
 
-	public function consultarTd($link){			
-		$query = "SELECT * FROM USUARIO_COMUM;"; 
-		$result = mysqli_query($link,$query);
-		if (!$result) {
-		    die("Não foi possível consultar: ".mysqli_error($link));
-		}					
-		return $result;
-	}
-
 	public function consultar($email,$link){			
 		$query = "SELECT * FROM USUARIO_COMUM WHERE Email = '".$email."';"; 
 		$result = mysqli_query($link,$query);
@@ -37,12 +28,11 @@ class UsuarioDAO{
 		if (!mysqli_query($link,$query)) {
 		    die("Não foi possível alterar: ".mysqli_error($link));
 		}					
-		echo "<br/>Alteração bem sucedida!";
 	}
 
-	public function deletar($usuario,$link){			
-		$query = "DELETE USUARIO_COMUM 
-			WHERE Email = '".$usuario->getEmail()."';"; 
+	public function deletar($email,$link){			
+		$query = "DELETE FROM USUARIO_COMUM 
+			WHERE Email = '".$email."';";
 		if (!mysqli_query($link,$query)) {
 		    die("Não foi possível deletar: ".mysqli_error($link));
 		}					

@@ -20,6 +20,7 @@
 			Data de Nascimento: <input type="text" name="dataNascimento"  value="<?php echo $data;?>" readonly> <br/>
 			Foto de Perfil: <img src="../Arquivos/FotosPerfil/<?php echo $img; ?>" alt="Foto perfil" width="50px" height="50px"> <br/><br/>
 		</form>
+		
 	</section>
 
 </div>
