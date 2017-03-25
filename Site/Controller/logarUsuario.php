@@ -7,6 +7,7 @@
 
 	include_once("../Persist/conexao.php");
 	include_once("../Persist/usuarioDAO.php");
+
 	$email = $_POST["email"];
 	$senha = $_POST["senha"];
 
@@ -25,7 +26,7 @@
 
 	
 	//conecta
-	$conexao = new Conexao("localhost","root","","SteamFlix");
+	$conexao = new Conexao("localhost","USUARIO_COMUM","12345","SteamFlix");
 	$link = $conexao->conectar();
 
 
@@ -33,6 +34,7 @@
 	$usuariodao = new UsuarioDAO();
 	$resultado = $usuariodao->consultar($email,$link);
 
+	$senhaO = "";
 	while ($row = mysqli_fetch_assoc($resultado)) {
 		$senhaO = $row['Senha'];
 	}
@@ -44,14 +46,19 @@
 		$contErros++;
 	}
 
-	if($contErros != 0){
+	if($contErros == 0){
 		//seto session
 		session_start();
 	    $_SESSION['email'] = $email;
 	    $_SESSION['nivelAcesso'] = 0;
-
+	    
 	    //redireciono
 	    header("Location: ../index.php");
+	}
+	else{
+		foreach ($erro as $e) {
+			echo $e;
+		}
 	}
 	
 ?>

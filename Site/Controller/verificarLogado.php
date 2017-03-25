@@ -5,7 +5,7 @@ if(isset($_SESSION['email'])){
 	$nivelAcesso=$_SESSION['nivelAcesso'];
 }
 else{
-	$nivelAcesso=-1;//nao logado
+	$nivelAcesso = -1;//nao logado
 }
 
 ?>

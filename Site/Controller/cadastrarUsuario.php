@@ -87,7 +87,7 @@
 		//cria o usuario
 		$usuario = new Usuario($email,$pNome,$uNome,$nome_imagem,$senha,$dataNascimento,$stilPoints);
 		//conecta
-		$conexao = new Conexao("localhost","root","","SteamFlix");
+		$conexao = new Conexao("localhost","USUARIO_COMUM","12345","SteamFlix");
 		$link = $conexao->conectar();
 
 		//cria o dao e salva
