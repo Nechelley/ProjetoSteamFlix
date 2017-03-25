@@ -18,9 +18,9 @@
 <div class="12u">
 
 <!-- Highlight -->
-	<section class="box highlight">		
-		<div class="formulario">
+	<section class="box highlight">
 		<h1 class="titulo">Cadastro</h1>
+		<div class="formulario">
 		<form action="../Controller/cadastrarUsuario.php" method="POST" enctype="multipart/form-data">
 			Primeiro Nome: <input type="text" name="pNome" maxlength="20" required="true"> <br/>
 			Segundo Nome: <input type="text" name="uNome" maxlength="20" required="true"> <br/>

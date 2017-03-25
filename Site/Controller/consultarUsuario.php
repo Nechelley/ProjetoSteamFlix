@@ -5,8 +5,9 @@
 	    header("Location: ../index.php");
 	}
 
-	include_once("../Persist/conexao.php");
-	include_once("../Persist/usuarioDAO.php");
+	include("../Model/usuario.php");
+	include("../Persist/conexao.php");
+	include("../Persist/usuarioDAO.php");
 
 	//conecta
 	$conexao = new Conexao("localhost","USUARIO_COMUM","12345","SteamFlix");
@@ -24,5 +25,5 @@
 	$conexao->fechar();
 	//arrumando data
 	$data = substr($dataNascimento,8,2)."/".substr($dataNascimento,5,2)."/".substr($dataNascimento,0,4);
-	include_once("../View/telaPerfil.php");
+	include("../View/telaPerfil.php");
 ?>

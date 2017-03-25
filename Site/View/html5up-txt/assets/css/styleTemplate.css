@@ -9,21 +9,7 @@
 	width: 50%;
 }
 
-.formularioBotao{
-	width:35%;
-	display: block;
-	float: left;
-	margin:5%;
-}
-
 .titulo{
 	font-size: 2em;
 	font-weight: bold;	
-}
-
-.fotoPerfil{
-	width: 30%;
-	height: 30%;
-	margin:auto;
-	display:block;
 }
