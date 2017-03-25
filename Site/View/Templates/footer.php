@@ -9,8 +9,8 @@
 									<p>
 										SteamFlix é <strong>a revolução</strong>, para os que curtem 
 										algum tipo de jogo e/ou filme e não querem ficar comprando
-										os produtos de um determinado peersonagem ou série em lugares diferentes. Aqui tudo isso pode ser feito em um único lugar
-										Apreveite e divirta-se :)
+										os produtos de um determinado personagem ou série em lugares diferentes. Aqui tudo isso pode ser feito em um único lugar
+										Aproveite e divirta-se :)
 									</p>
 								</section>
 

@@ -5,7 +5,7 @@
 		<p>Um site incrível onde você encontra todos os seus filmes e jogos prediletos</p>
 		<?php
 			if($nivelAcesso == -1){
-				echo "<a href=\"View/TelaCadastroUsuario.php\" class=\"button\">Cadastre-se</a>";
+				echo "<a href=\"View/telaCadastroUsuario.php\" class=\"button\">Cadastre-se</a>";
 			}
 		?>
 	</section>
