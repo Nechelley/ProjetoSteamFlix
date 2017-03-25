@@ -13,7 +13,7 @@ BEGIN
 		Senha = SenhaN,
 		DataNascimento = dataNasc,
 		ImagemPerfil = FotoPerfilN 	
-	WHERE PEmail = Email;	 
+	WHERE EmailN = Email;	 
 END //
 DELIMITER ;
 

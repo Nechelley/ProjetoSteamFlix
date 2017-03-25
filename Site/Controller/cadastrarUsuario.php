@@ -57,6 +57,7 @@
 
 	
 	$nome_imagem='noimage.png';
+	$fezUpload = false;
 	//testando se há arquivo
 	if(!empty($foto['name'])){
 		//tamanho
@@ -79,7 +80,10 @@
 			//caminho
 			$caminho_imagem = "../Arquivos/FotosPerfil/".$nome_imagem;
 			//Faz upload
-			move_uploaded_file($foto['tmp_name'], $caminho_imagem);
+			$fezUpload = move_uploaded_file($foto['tmp_name'], $caminho_imagem);
+			if(!fezUpload){
+				$contErros++;
+			}
 		}
 	}
 
