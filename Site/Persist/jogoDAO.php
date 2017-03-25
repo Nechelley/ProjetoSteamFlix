@@ -1,28 +1,33 @@
 <?php
 class JogoDAO{
 	public function cadastrar($jogo,$link){
-		$aux = '(';
-		for($i = 0;$i < count($jogo->getSistemasOperacionais()-1;$i++){
-			$aux .= '$jogo->getSistemasOperacionais()[$i],'
-		}
-		$aux .= '$jogo->getSistemasOperacionais()[count($jogo->getSistemasOperacionais()-1]);';
-
- 		$query = "call INSERIR_JOGO(
- 			$jogo->getCodigo(),$jogo->getQtdVendida(),
- 			$jogo->getNotaUsuario(), $jogo->getClassificacaoEtaria(),
- 			$jogo->getPrecoCusto(),$jogo->getPrecoVenda(),
- 			'$jogo->getGenero()','$jogo->getNome()',
- 			'$jogo->getDataLancamento()','$jogo->getIdiomaAudio()',
- 			'$jogo->getIdiomaLegenda()','$jogo->getDescricao()',
- 			$jogo->getQtdJogadores(),$aux,
- 			'$jogo->getRequisitoMinimos()','$jogo->getRequisitosRecomendados()',
- 			'$jogo->getFornecedorNome()','$jogo->getAdministradorEmail()'
+		$query = "CALL INSERIR_JOGO(
+ 			".$jogo->getCodigo().",".$jogo->getQtdVendida().",
+ 			".$jogo->getNotaUsuario().", ".$jogo->getClassificacaoEtaria()",
+ 			".$jogo->getPrecoCusto().",".$jogo->getPrecoVenda().",
+ 			'".$jogo->getGenero()."','".$jogo->getNome()."',
+ 			'".$jogo->getDataLancamento()."','".$jogo->getIdiomaAudio()."',
+ 			'".$jogo->getIdiomaLegenda()."','".$jogo->getDescricao()."',
+ 			".$jogo->getQtdJogadores().",'".$jogo->getSistemasOperacionais()."',
+ 			'".$jogo->getRequisitoMinimos()."','".$jogo->getRequisitosRecomendados()."',
+ 			'".$jogo->getFornecedorNome()."','".$jogo->getAdministradorEmail()."'
  			);"; 
 		echo($query);
 		if(!mysqli_query($link, $query)) {
 			die('Não foi possível salvar: ' . mysqli_error($link));
 		}
-		echo 'Salvar bem sucedido';
+		echo 'Salvar jogo bem sucedido';
+
+		$aux = "INSERT INTO Imagens_Jogo VALUES ";
+		for($i = 0;$i < count($jogo->getImagens())-1;$i++){
+			$aux .= "('".$jogo->getImagens()[$i]."',".$jogo->getCodigo()."),";
+		}
+		$aux .= "('".$jogo->getImagens()[count($jogo->getImagens()-1]."',".$jogo->getCodigo().");";
+		echo($query);
+		if(!mysqli_query($link, $query)) {
+			die('Não foi possível salvar: ' . mysqli_error($link));
+		}
+		echo 'Salvar jogo bem sucedido2';
 	}
 
 	public function consultar($jogo,$link){			

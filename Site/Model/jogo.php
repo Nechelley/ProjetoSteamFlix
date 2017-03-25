@@ -11,7 +11,7 @@ class Jogo extends Produto{
 
 
 	//construtor da classe
-	public function __construct($codigo,$qtdVendida,$notaUsuario,$classificacaoEtaria,$precoCusto,$precoVenda,$genero,$nome,$dataLancamento,$dataEntradaSistema,$idiomaAudio,$idiomaLegenda,$imagens,$fornecedorNome,$administradorEmail,$descricao,$qtdJogadores,$sistemasOperacionais,$requisitosMinimos,$requisitosRecomendados,$fornecedorNome,$administradorEmail){
+	public function __construct($codigo,$qtdVendida,$notaUsuario,$classificacaoEtaria,$precoCusto,$precoVenda,$genero,$nome,$dataLancamento,$dataEntradaSistema,$idiomaAudio,$idiomaLegenda,$imagens,$descricao,$qtdJogadores,$sistemasOperacionais,$requisitosMinimos,$requisitosRecomendados,$fornecedorNome,$administradorEmail){
 		parent::__construct($codigo,$qtdVendida,$notaUsuario,$classificacaoEtaria,$precoCusto,$precoVenda,$genero,$nome,$dataLancamento,$dataEntradaSistema,$idiomaAudio,$idiomaLegenda,$imagens,$fornecedorNome,$administradorEmail);
 		$this->descricao = $descricao;
 		$this->qtdJogadores = $qtdJogadores;

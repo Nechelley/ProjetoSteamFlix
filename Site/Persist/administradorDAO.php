@@ -14,13 +14,12 @@ class AdministradorDAO{
 		echo 'Salvar bem sucedido';
 	}
 
-	public function consultar($adiministrador,$link){			
-		$query = "SELECT * FROM ADMINISTRADOR WHERE Email = $adiministrador->getEmail();"; 
+	public function consultar($email,$link){			
+		$query = "SELECT * FROM ADMINISTRADOR WHERE Email = '".$email."';"; 
 		$result = mysqli_query($link,$query);
 		if (!$result) {
 		    die("Não foi possível consultar: ".mysqli_error($link));
-		}					
-		echo "<br/>Consulta bem sucedida!";
+		}
 		return $result;
 	}
 

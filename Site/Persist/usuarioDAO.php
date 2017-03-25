@@ -36,7 +36,6 @@ class UsuarioDAO{
 		if (!mysqli_query($link,$query)) {
 		    die("Não foi possível deletar: ".mysqli_error($link));
 		}					
-		echo "<br/>Exclusão bem sucedida!";
 	}
 
 }
