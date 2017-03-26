@@ -13,6 +13,7 @@
 
 <!-- Highlight -->
 	<section class="box highlight">
+		<div class="formulario">
 		<form action="alterarUsuario2.php" method="POST" enctype="multipart/form-data">
 			Primeiro Nome: <input type="text" name="pNome" value="<?php echo $pNome;?>" required> <br/>
 			Segundo Nome: <input type="text" name="uNome"  value="<?php echo $uNome;?>" required> <br/>
@@ -24,6 +25,7 @@
 			<input type="hidden" name="senha" value="<?php echo $senha;?>">
 			<input type="submit" value="Alterar">
 		</form>
+		</div>
 	</section>
 
 </div>

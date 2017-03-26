@@ -5,15 +5,15 @@
 
 .formulario{
 	display: block;
-	float:left;
 	width: 50%;
+	margin:auto;
 }
 
 .formularioBotao{
 	width:35%;
 	display: block;
 	float: left;
-	margin:5%;
+	margin:7%;
 }
 
 .titulo{
@@ -26,4 +26,10 @@
 	height: 30%;
 	margin:auto;
 	display:block;
+}
+
+.opcoesAdmin{
+	display:block;
+	width: 90%;
+	margin:auto;
 }
