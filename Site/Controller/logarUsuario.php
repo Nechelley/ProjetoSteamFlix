@@ -56,9 +56,8 @@
 	    header("Location: ../index.php");
 	}
 	else{
-		foreach ($erro as $e) {
-			echo $e;
-		}
+		$quemChamou = "../View/telaLogin.php";
+		include_once("../View/telaFalha.php");
 	}
 	
 ?>

@@ -22,7 +22,7 @@
 		<h1 class="titulo">Cadastro de Jogo</h1>
 		<div class="formulario">
 		<form action="../Controller/cadastrarJogo.php" method="POST" enctype="multipart/form-data">
-			Código do Jogo: <input type="text" name="codigoJogo" maxlength="20" required="true"> <br/>
+			Código do Jogo: <input type="text" name="codigo" maxlength="20" required="true"> <br/>
 			Classificacao Etária: <input type="text" name="classificaoEtaria" maxlength="20" required="true"> <br/>
 			Preço de Custo: <input type="text" name="crecoCusto" maxlength="10" required="true"> <br/>
 			Preço de Venda: <input type="text" name="precoVenda" maxlength="10" required="true"> <br/>
@@ -41,15 +41,22 @@
 			Data de Lançamento: <input type="text" pattern="\d{1,2}/\d{1,2}/\d{4}"  name="dataLancamento" placeholder="dd/mm/aaaa" required="true"> <br/>
 			Idioma do Áudio: <input type="text" name="idiomaAudio" maxlength="20" required="true"> <br/>
 			Idioma da Legenda: <input type="text" name="idiomaLegenda" maxlength="20" required="true"> <br/>
-			Descrição: <input type="text" name="descricao" maxlength="500" required="true"> <br/>			
-			Sistemas Operacionais: <input type="radio" name="Windows">Windows
-			<input type="radio" name="Linux">Linux
-			<input type="radio" name="MacOS">MacOS<br/>
+			Descrição: <input type="text" name="descricao" maxlength="500" required="true"> <br/>
+			Qtd de Jogadores: <input type="text" name="qtdJogadores" maxlength="10" required="true" > <br/>			
+			Sistemas Operacionais:
+			<input type="checkbox" name="sistemasOperacionais" value="Windows">Windows
+			<input type="checkbox" name="sistemasOperacionais" value="Linux">Linux
+			<input type="checkbox" name="sistemasOperacionais" value="MacOS">MacOS<br/>
 			Requisitos Mínimos: <input type="text" name="requisitosMinimos" maxlength="500" required="true"> <br/>			
 			Requisitos Recomendados: <input type="text" name="requisitosRecomendados" maxlength="500" required="true"> <br/>			
-			Nome do Fornecedor: <input type="text" name="nomeFornecedor" maxlength="20" required="true"> <br/>
+			Nome do Fornecedor: <input type="text" name="fornecedorNome" maxlength="20" required="true"> <br/>
 			Email do Fornecedor: <input type="text" name="email" maxlength="45"> <br/>
-			Imagem do Jogo: <input type='file' name='img'/> <br/><br/>
+			<?php 
+				for($position = 0; $position < 5; $position++){
+					echo "Imagem".$position.": <input type='file' name='img".$position."'/> <br/>";
+				}
+			?>
+			<br/>
 			<input type="submit" value="Enviar">
 		</form>
 		</div>

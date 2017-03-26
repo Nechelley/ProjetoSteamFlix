@@ -22,7 +22,7 @@
 		<h1 class="titulo">Alterar Jogo</h1>
 		<div class="formulario">
 		<form action="../Controller/cadastrarJogo.php" method="POST" enctype="multipart/form-data">
-			Código do Jogo: <input type="text" name="codigoJogo" maxlength="20" required="true" value="<?php echo $codigoJogo;?>" > <br/>
+			Código do Jogo: <input type="text" name="codigo" maxlength="20" required="true" value="<?php echo $codigo;?>" > <br/>
 			Classificacao Etária: <input type="text" name="classificaoEtaria" maxlength="20" required="true" value="<?php echo $classificaoEtaria;?>" > <br/>
 			Preço de Custo: <input type="text" name="precoCusto" maxlength="10" required="true" value="<?php echo $precoCusto;?>" > <br/>
 			Preço de Venda: <input type="text" name="precoVenda" maxlength="10" required="true" value="<?php echo $precoVenda;?>" > <br/>
@@ -42,16 +42,23 @@
 			Idioma do Áudio: <input type="text" name="idiomaAudio" maxlength="20" required="true" value="<?php echo $idiomaAudio;?>" > <br/>
 			Idioma da Legenda: <input type="text" name="idiomaLegenda" maxlength="20" required="true" value="<?php echo $idiomaLegenda;?>" > <br/>
 			Descrição: <input type="text" name="descricao" maxlength="500" required="true" value="<?php echo $descricao;?>" > <br/>
+			Qtd de Jogadores: <input type="text" name="qtdJogadores" maxlength="10" required="true" value="<?php echo $qtdJogadores;?>" > <br/>
 
 			//checar aqui			
-			Sistemas Operacionais: <input type="radio" name="Windows">Windows
-			<input type="radio" name="Linux">Linux
-			<input type="radio" name="MacOS">MacOS<br/>
+			Sistemas Operacionais:
+			<input type="checkbox" name="sistemasOperacionais" value="Windows">Windows
+			<input type="checkbox" name="sistemasOperacionais" value="Linux">Linux
+			<input type="checkbox" name="sistemasOperacionais" value="MacOS">MacOS<br/>
 			Requisitos Mínimos: <input type="text" name="requisitosMinimos" maxlength="500" required="true" value="<?php echo $requisitosMinimos;?>" > <br/>			
 			Requisitos Recomendados: <input type="text" name="requisitosRecomendados" maxlength="500" required="true" value="<?php echo $requisitosRecomendados;?>" > <br/>			
-			Nome do Fornecedor: <input type="text" name="nomeFornecedor" maxlength="20" required="true" value="<?php echo $nomeFornecedor;?>" > <br/>
+			Nome do Fornecedor: <input type="text" name="fornecedorNome" maxlength="20" required="true" value="<?php echo $fornecedorNome;?>" > <br/>
 			Email do Fornecedor: <input type="text" name="email" maxlength="45" value="<?php echo $email;?>" > <br/>
-			Adicionar Imagens: <input type='file' name='img'/> <br/><br/>
+			<?php 
+				for($position = 0; $position < 5; $position++){
+					echo "Imagem".$position.": <input type='file' name='img".$position."'/> <br/>";
+				}
+			?>
+			<br/>
 			<input type="submit" value="Enviar">
 		</form>
 		</div>
