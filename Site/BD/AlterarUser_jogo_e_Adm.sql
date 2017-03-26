@@ -37,7 +37,7 @@ BEGIN
 		Cpf = CpfN,
 		Root = RootN,
 		FotoPerfil = FotoPerfilN
-	WHERE EmailN = Email; 	
+	WHERE PEmail = Email; 	
 END //
 DELIMITER ;
 

@@ -21,7 +21,7 @@ class Fornecedor{
 		$this->nome = $valor;
 	}
 
-	public function setEmail(){
+	public function setEmail($valor){
 		$this->email = $valor;
 	}
 }

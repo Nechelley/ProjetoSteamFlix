@@ -8,8 +8,6 @@
 	include_once("../Model/jogo.php");
 	include_once("../Persist/conexao.php");
 	include_once("../Persist/jogoDAO.php");
-	include_once("../Model/fornecedor.php");
-	include_once("../Persist/fornecedorDAO.php");
 
 	$codigo = $_POST["codigo"];
 	$qtdVendida = 0;
@@ -22,11 +20,8 @@
 	$dataLancamento = $_POST["dataLancamento"];
 	$idiomaAudio = $_POST["idiomaAudio"];
 	$idiomaLegenda = $_POST["idiomaLegenda"];
-
 	$fornecedorNome = $_POST["fornecedorNome"];
-
 	$administradorEmail = $email;
-
 	$descricao = $_POST["descricao"];
 	$qtdJogadores = $_POST["qtdJogadores"];
 
@@ -69,7 +64,7 @@
 
 	
 	for($i = 0;$i < count($img);$i++) {
-		$nome_imagem[$i]="noimage".$i.".png";
+		$nome_imagem[$i]='noimage.png';
 		//testando se há arquivo
 		if(!empty($img[$i]['name'])){
 			//tamanho
@@ -100,46 +95,17 @@
 
 	if($contErros == 0){
 		//cria Jogo
-		$jogo = new Jogo($codigo,$qtdVendida,$notaUsuario,$classificacaoEtaria,$precoCusto,$precoVenda,$genero,$nome,$dataLancamento,$idiomaAudio,$idiomaLegenda,$nome_imagem,$descricao,$qtdJogadores,$so,$requisitosMinimos,$requisitosRecomendados,$fornecedorNome,$administradorEmail);
-		
+		$jogo = new Jogo($codigo,$qtdVendida,$notaUsuario,$classificacaoEtaria,$precoCusto,$precoVenda,$genero,$nome,$dataLancamento,$idiomaAudio,$idiomaLegenda,$img,$descricao,$qtdJogadores,$so,$requisitosMinimos,$requisitosRecomendados,$fornecedorNome,$administradorEmail);
 		//conecta
 		$conexao = new Conexao("localhost","ADMINISTRADOR","12345","SteamFlix");
 		$link = $conexao->conectar();
 
-		//verifico se fornecedor existe
-		$fornecedordao = new FornecedorDAO();
-		$resultado = $fornecedordao->consultar($fornecedorNome,$link);
+		$jogodao = new JogoDAO();
+		$jogodao->cadastrar($jogo,$link);
 
-		while ($row = mysqli_fetch_assoc($resultado)) {
-		    $nomeF = $row['Nome'];
-		}
-
-		if(!isset($_POST["fornecedorEmail"])){//se n passou email
-			if(!isset($nomeF)){//significa q o adm achou q um fornecedor ja estava cadastrado
-				$erro[$contErros] = 'Fornecedor ainda não cadastrado.';
-				$contErros++;
-			}
-		}else{//se passou email
-			if(!isset($nomeF)){//cadastro o fornecedor
-				$fornecedor = new Fornecedor($fornecedorNome,$_POST["fornecedorEmail"]);
-				$fornecedordao->cadastrar($fornecedor,$link);
-			}
-		}
-
-		if($contErros == 0){
-			$jogodao = new JogoDAO();
-			$jogodao->cadastrar($jogo,$link);
-
-			$conexao->fechar();
-	        //redireciono
-	        header("Location: ../index.php");
-		}
-		else{
-			//houve algum erro
-			foreach ($erro as $e) {
-				echo $r."<br>";
-			}
-		}
+		$conexao->fechar();
+        //redireciono
+        header("Location: ../index.php");
 	}
 	else{
 		//houve algum erro
