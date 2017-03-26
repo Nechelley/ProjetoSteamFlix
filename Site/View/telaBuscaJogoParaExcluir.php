@@ -21,7 +21,7 @@
 	<section class="box highlight">
 		<h1 class="titulo">Buscar Jogo a ser Excluído</h1>
 		<div class="formulario">
-		<form action="../Controller/excluirJogo.php" method="POST" enctype="multipart/form-data">
+		<form action="../Controller/deletarJogo.php" method="POST" enctype="multipart/form-data">
 			Código do Jogo: <input type="text" name="codigo" maxlength="20" required="true"> <br/>			
 			<input type="submit" value="Enviar">
 		</form>

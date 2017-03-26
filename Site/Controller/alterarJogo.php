@@ -1,4 +1,4 @@
-<?php
+ <?php
 	include_once("verificarLogado.php");
 	if($nivelAcesso != 1){
 		//redireciono
@@ -48,7 +48,7 @@
 		$cont++;
 	}
 	//arrumando data
-	$dataLancamento = substr($dataLancamento,8,2)."/".substr($dataLancamento,5,2)."/".substr($dataLancamento,0,4);
-	//arrumando data
 	$dataEntradaSistema = substr($dataEntradaSistema,8,2)."/".substr($dataEntradaSistema,5,2)."/".substr($dataEntradaSistema,0,4);
-	include_once("../View/telaListaJogo.php");
+	//arrumando data
+	$dataLancamento = substr($dataLancamento,8,2)."/".substr($dataLancamento,5,2)."/".substr($dataLancamento,0,4);
+	include_once("../View/telaAlteraJogo.php");

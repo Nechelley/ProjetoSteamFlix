@@ -5,7 +5,7 @@
 	    header("Location: ../index.php");
 	}
 	
-	$ppb = "view";
+	$ppb = "controller";
 	$titulo = "Cadastro Jogo";
 	include_once("Templates/header.php");
 	$nav = "Home";
@@ -21,9 +21,9 @@
 	<section class="box highlight">
 		<h1 class="titulo">Alterar Jogo</h1>
 		<div class="formulario">
-		<form action="../Controller/cadastrarJogo.php" method="POST" enctype="multipart/form-data">
-			Código do Jogo: <input type="text" name="codigo" maxlength="20" required="true" value="<?php echo $codigo;?>" > <br/>
-			Classificacao Etária: <input type="text" name="classificaoEtaria" maxlength="20" required="true" value="<?php echo $classificaoEtaria;?>" > <br/>
+		<form action="../Controller/alterarJogo2.php" method="POST" enctype="multipart/form-data">
+			Código do Jogo: <input type="text" name="codigo" maxlength="20" required="true" value="<?php echo $codigo;?>" readonly> <br/>
+			Classificacao Etária: <input type="text" name="classificacaoEtaria" maxlength="20" required="true" value="<?php echo $classificacaoEtaria;?>" > <br/>
 			Preço de Custo: <input type="text" name="precoCusto" maxlength="10" required="true" value="<?php echo $precoCusto;?>" > <br/>
 			Preço de Venda: <input type="text" name="precoVenda" maxlength="10" required="true" value="<?php echo $precoVenda;?>" > <br/>
 			Gênero:<select name="genero"  required="true" multiple>
@@ -44,15 +44,15 @@
 			Descrição: <input type="text" name="descricao" maxlength="500" required="true" value="<?php echo $descricao;?>" > <br/>
 			Qtd de Jogadores: <input type="text" name="qtdJogadores" maxlength="10" required="true" value="<?php echo $qtdJogadores;?>" > <br/>
 
-			//checar aqui			
 			Sistemas Operacionais:
-			<input type="checkbox" name="sistemasOperacionais" value="Windows">Windows
-			<input type="checkbox" name="sistemasOperacionais" value="Linux">Linux
-			<input type="checkbox" name="sistemasOperacionais" value="MacOS">MacOS<br/>
+			<input type="checkbox" name="w" value="Windows">Windows
+			<input type="checkbox" name="l" value="Linux">Linux
+			<input type="checkbox" name="m" value="MacOS">MacOS<br/>
+
 			Requisitos Mínimos: <input type="text" name="requisitosMinimos" maxlength="500" required="true" value="<?php echo $requisitosMinimos;?>" > <br/>			
 			Requisitos Recomendados: <input type="text" name="requisitosRecomendados" maxlength="500" required="true" value="<?php echo $requisitosRecomendados;?>" > <br/>			
-			Nome do Fornecedor: <input type="text" name="fornecedorNome" maxlength="20" required="true" value="<?php echo $fornecedorNome;?>" > <br/>
-			Email do Fornecedor: <input type="text" name="email" maxlength="45" value="<?php echo $email;?>" > <br/>
+			Nome do Fornecedor: <input type="text" name="fornecedorNome" maxlength="20" required="true" value="<?php echo $fornecedorNome;?>" readonly> <br/>
+			Email do Fornecedor: <input type="text" name="email" maxlength="45" value="<?php echo $administradorEmail;?>" readonly> <br/>
 			<?php 
 				for($position = 0; $position < 5; $position++){
 					echo "Imagem".$position.": <input type='file' name='img".$position."'/> <br/>";

@@ -20,17 +20,7 @@
 			Classificacao Etária: <input type="text" name="classificaoEtaria" maxlength="20" required="true" value="<?php echo $classificacaoEtaria;?>" readonly> <br/>
 			Preço de Custo: <input type="text" name="precoCusto" maxlength="10" required="true" value="<?php echo $precoCusto;?>" readonly> <br/>
 			Preço de Venda: <input type="text" name="precoVenda" maxlength="10" required="true" value="<?php echo $precoVenda;?>" readonly> <br/>
-			Gênero:<select name="genero"  required="true" multiple readonly>
-				<option value="Acao">Ação</option>				
-				<option value="Comedia">Comédia</option>
-				<option value="Aventura">Aventura</option>
-				<option value="Romance">Romance</option>
-				<option value="Drama">Drama</option>
-				<option value="Terror">Terror</option>
-				<option value="Suspense">Suspense</option>
-				<option value="Infantil">Infantil</option>
-				<option value="Outro">Outro</option>				
-			</select> <br/>
+			Gênero: <input type="text" name="Genero" value="<?php echo $genero;?>" readonly> <br/>
 			Nome: <input type="text" name="nome" maxlength="20" required="true" value="<?php echo $nome;?>" readonly> <br/>
 			Data de Lançamento: <input type="text" pattern="\d{1,2}/\d{1,2}/\d{4}"  name="dataLancamento" placeholder="dd/mm/aaaa" required="true" value="<?php echo $dataLancamento;?>" readonly> <br/>
 			Idioma do Áudio: <input type="text" name="idiomaAudio" maxlength="20" required="true" value="<?php echo $idiomaAudio;?>" readonly> <br/>
