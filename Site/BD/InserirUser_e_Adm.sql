@@ -76,5 +76,3 @@ BEGIN
 		); 	
 END //
 DELIMITER ;
-
-drop procedure INSERIR_JOGO;

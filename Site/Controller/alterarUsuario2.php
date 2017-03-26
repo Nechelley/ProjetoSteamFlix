@@ -97,17 +97,14 @@
 		//cria o dao e salva
 		$usuariodao = new UsuarioDAO();
 		$usuariodao->alterar($usuario,$link);
-
+		$conexao->fechar();
         //redireciono
         header("Location: consultarUsuario.php");
 	}
 	else{
 		//houve algum erro
-		foreach ($erro as $e) {
-			echo $r."<br>";
-		}
+		$quemChamou = "../View/telaAlteraPerfil.php";
+		include_once("../View/telaFalha.php");
 	}
-	
-	$conexao->fechar();
 ?>
 

@@ -94,21 +94,18 @@
 		$usuariodao = new UsuarioDAO();
 		$usuariodao->cadastrar($usuario,$link);
 
+		$conexao->fechar();
 		//seto session
 		session_start();
         $_SESSION['email'] = $email;
-        $_SESSION['nivelAcesso'] = 0;
-
+        $_SESSION['nivelAcesso'] = 0;        
         //redireciono
         header("Location: ../index.php");
 	}
 	else{
 		//houve algum erro
-		foreach ($erro as $e) {
-			echo $r."<br>";
-		}
-	}
-	
-	$conexao->fechar();
+		$quemChamou = "../View/telaCadastroUsuario.php";
+		include_once("../View/telaFalha.php");		
+	}		
 ?>
 
