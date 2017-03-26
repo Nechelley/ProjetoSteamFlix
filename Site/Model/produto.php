@@ -17,7 +17,7 @@ class Produto{
 	private $adiministradorEmail;
 
 	//construtor da classe
-	public function __construct($codigo,$qtdVendida,$notaUsuario,$classificacaoEtaria,$precoCusto,$precoVenda,$genero,$nome,$dataLancamento,$dataEntradaSistema,$idiomaAudio,$idiomaLegenda,$imagens,$fornecedorNome,$adiministradorEmail){
+	public function __construct($codigo,$qtdVendida,$notaUsuario,$classificacaoEtaria,$precoCusto,$precoVenda,$genero,$nome,$dataLancamento,$idiomaAudio,$idiomaLegenda,$imagens,$fornecedorNome,$adiministradorEmail){
 		$this->codigo = $codigo;
 		$this->qtdVendida = $qtdVendida;
 		$this->notaUsuario = $notaUsuario;
@@ -27,7 +27,6 @@ class Produto{
 		$this->genero = $genero;
 		$this->nome = $nome;
 		$this->dataLancamento = $dataLancamento;
-		$this->dataEntradaSistema = $dataEntradaSistema;
 		$this->idiomaAudio = $idiomaAudio;
 		$this->idiomaLegenda = $idiomaLegenda;
 		$this->imagens = $imagens;
@@ -47,7 +46,7 @@ class Produto{
 		return $this->notaUsuario;
 	}
 
-	public function getClassificaoEtaria(){
+	public function getClassificacaoEtaria(){
 		return $this->classificacaoEtaria;
 	}
 
@@ -103,7 +102,8 @@ class Produto{
 
 	public function setQtdVendida($valor){
 		$this->qtdVendida = $valor;
-
+	}
+	
 	public function setNotaUsuario($valor){
 		$this->notaUsuario = $valor;
 	}

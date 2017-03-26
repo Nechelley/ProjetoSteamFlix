@@ -1,15 +1,33 @@
 <?php
 class JogoDAO{
 	public function cadastrar($jogo,$link){
+		$aux = "(";
+		if(($jogo->getSistemasOperacionais()[0] && $jogo->getSistemasOperacionais()[1]) && $jogo->getSistemasOperacionais()[2]){//wlm
+			$aux .= "'Windows','Linux','MacOS'";
+		}else if($jogo->getSistemasOperacionais()[0] && $jogo->getSistemasOperacionais()[1]){//wl
+			$aux .= "'Windows','Linux'";
+		}else if($jogo->getSistemasOperacionais()[1] && $jogo->getSistemasOperacionais()[2]){//lm
+			$aux .= "'Linux','MacOS'";
+		}else if($jogo->getSistemasOperacionais()[0] && $jogo->getSistemasOperacionais()[2]){//wm
+			$aux .= "'Windows','MacOS'";
+		}else if($jogo->getSistemasOperacionais()[0]){//w
+			$aux .= "'Windows'";
+		}else if($jogo->getSistemasOperacionais()[1]){//l
+			$aux .= "'Linux'";
+		}else if($jogo->getSistemasOperacionais()[2]){//m
+			$aux .= "'MacOS'";
+		}
+		$aux .= ")";
+
 		$query = "CALL INSERIR_JOGO(
  			".$jogo->getCodigo().",".$jogo->getQtdVendida().",
- 			".$jogo->getNotaUsuario().", ".$jogo->getClassificacaoEtaria()",
+ 			".$jogo->getNotaUsuario().", ".$jogo->getClassificacaoEtaria().",
  			".$jogo->getPrecoCusto().",".$jogo->getPrecoVenda().",
  			'".$jogo->getGenero()."','".$jogo->getNome()."',
- 			'".$jogo->getDataLancamento()."','".$jogo->getIdiomaAudio()."',
+ 			".$jogo->getDataLancamento().",'".$jogo->getIdiomaAudio()."',
  			'".$jogo->getIdiomaLegenda()."','".$jogo->getDescricao()."',
- 			".$jogo->getQtdJogadores().",'".$jogo->getSistemasOperacionais()."',
- 			'".$jogo->getRequisitoMinimos()."','".$jogo->getRequisitosRecomendados()."',
+ 			".$jogo->getQtdJogadores().",".$aux.",
+ 			'".$jogo->getRequisitosMinimos()."','".$jogo->getRequisitosRecomendados()."',
  			'".$jogo->getFornecedorNome()."','".$jogo->getAdministradorEmail()."'
  			);"; 
 		echo($query);
@@ -22,7 +40,7 @@ class JogoDAO{
 		for($i = 0;$i < count($jogo->getImagens())-1;$i++){
 			$aux .= "('".$jogo->getImagens()[$i]."',".$jogo->getCodigo()."),";
 		}
-		$aux .= "('".$jogo->getImagens()[count($jogo->getImagens()-1]."',".$jogo->getCodigo().");";
+		$aux .= "('".$jogo->getImagens()[count($jogo->getImagens())-1]."',".$jogo->getCodigo().");";
 		echo($query);
 		if(!mysqli_query($link, $query)) {
 			die('Não foi possível salvar: ' . mysqli_error($link));
@@ -42,8 +60,8 @@ class JogoDAO{
 
 	public function alterar($jogo,$link){
 		$aux = '(';
-		for($i = 0;$i < count($jogo->getSistemasOperacionais()-1;$i++){
-			$aux .= '$jogo->getSistemasOperacionais()[$i],'
+		for($i = 0;$i < count($jogo->getSistemasOperacionais())-1;$i++){
+			$aux .= '$jogo->getSistemasOperacionais()[$i],';
 		}
 		$aux .= '$jogo->getSistemasOperacionais()[count($jogo->getSistemasOperacionais()-1]);';
 

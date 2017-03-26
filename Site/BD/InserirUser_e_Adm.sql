@@ -40,7 +40,6 @@ CREATE PROCEDURE INSERIR_JOGO(
 	Genero ENUM('Acao', 'Comedia', 'Aventura', 'Romance', 'Drama', 'Terror', 'Suspense', 'Infantil', 'Outro'),
 	Nome VARCHAR(45),
 	DataLancamento VARCHAR(10),
-	DataEntradaSistema DATE,
 	IdiomaAudio VARCHAR(45),
 	IdiomaLegenda VARCHAR(45),
 	Descricao VARCHAR(500),
@@ -77,3 +76,5 @@ BEGIN
 		); 	
 END //
 DELIMITER ;
+
+drop procedure INSERIR_JOGO;

@@ -507,3 +507,5 @@ ON SteamFlix.*
 TO USUARIO_COMUM@'%'
 IDENTIFIED BY '12345';
 
+insert into administrador values
+('a','a','a','a',current_date(),now(),2.0,12345,1,'noimage.png');

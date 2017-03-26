@@ -24,7 +24,11 @@
 	$administradorEmail = $email;
 	$descricao = $_POST["descricao"];
 	$qtdJogadores = $_POST["qtdJogadores"];
-	$sistemasOperacionais = $_POST["sistemasOperacionais"];
+
+	$so[0] = ( isset($_POST['w']) ) ? true : null;
+	$so[1] = ( isset($_POST['l']) ) ? true : null;
+	$so[2] = ( isset($_POST['m']) ) ? true : null;
+
 	$requisitosMinimos = $_POST["requisitosMinimos"];
 	$requisitosRecomendados = $_POST["requisitosRecomendados"];
 	$img[0] = $_FILES["img0"];
@@ -36,6 +40,10 @@
 	$contErros = 0;
 	$erro[$contErros] = 'Erros:<br>';
 	
+	if(!(($so[0] || $so[1]) || $so[2])){
+		$erro[$contErros] = 'Selecione um SO.';
+		$contErros++;
+	}
 	//garantindo data de nascimento valida
 	$dia = substr($dataLancamento, 0,2);
 	$mes = substr($dataLancamento, 3,2);
@@ -79,7 +87,7 @@
 				//caminho
 				$caminho_imagem = "../Arquivos/FotosPerfil/".$nome_imagem[$i];
 				//Faz upload
-				move_uploaded_file($foto['tmp_name'], $caminho_imagem);
+				move_uploaded_file($img[$i]['tmp_name'], $caminho_imagem);
 			}
 		}
 	}
@@ -87,9 +95,9 @@
 
 	if($contErros == 0){
 		//cria Jogo
-		$jogo = new Jogo($codigo,$qtdVendida,$notaUsuario,$classificacaoEtaria,$precoCusto,$precoVenda,$genero,$nome,$dataLancamento,$idiomaAudio,$idiomaLegenda,$img,$descricao,$qtdJogadores,$sistemasOperacionais,$requisitosMinimos,$requisitosRecomendados,$fornecedorNome,$administradorEmail);
+		$jogo = new Jogo($codigo,$qtdVendida,$notaUsuario,$classificacaoEtaria,$precoCusto,$precoVenda,$genero,$nome,$dataLancamento,$idiomaAudio,$idiomaLegenda,$img,$descricao,$qtdJogadores,$so,$requisitosMinimos,$requisitosRecomendados,$fornecedorNome,$administradorEmail);
 		//conecta
-		$conexao = new Conexao("localhost","ADMNISTRADOR","12345","SteamFlix");
+		$conexao = new Conexao("localhost","ADMINISTRADOR","12345","SteamFlix");
 		$link = $conexao->conectar();
 
 		$jogodao = new JogoDAO();

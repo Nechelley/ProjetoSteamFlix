@@ -23,8 +23,8 @@
 		<div class="formulario">
 		<form action="../Controller/cadastrarJogo.php" method="POST" enctype="multipart/form-data">
 			Código do Jogo: <input type="text" name="codigo" maxlength="20" required="true"> <br/>
-			Classificacao Etária: <input type="text" name="classificaoEtaria" maxlength="20" required="true"> <br/>
-			Preço de Custo: <input type="text" name="crecoCusto" maxlength="10" required="true"> <br/>
+			Classificacao Etária: <input type="text" name="classificacaoEtaria" maxlength="20" required="true"> <br/>
+			Preço de Custo: <input type="text" name="precoCusto" maxlength="10" required="true"> <br/>
 			Preço de Venda: <input type="text" name="precoVenda" maxlength="10" required="true"> <br/>
 			Gênero:<select name="genero"  required="true" multiple>
 				<option value="Acao">Ação</option>				
@@ -44,9 +44,9 @@
 			Descrição: <input type="text" name="descricao" maxlength="500" required="true"> <br/>
 			Qtd de Jogadores: <input type="text" name="qtdJogadores" maxlength="10" required="true" > <br/>			
 			Sistemas Operacionais:
-			<input type="checkbox" name="sistemasOperacionais" value="Windows">Windows
-			<input type="checkbox" name="sistemasOperacionais" value="Linux">Linux
-			<input type="checkbox" name="sistemasOperacionais" value="MacOS">MacOS<br/>
+			<input type="checkbox" name="w" value="Windows">Windows
+			<input type="checkbox" name="l" value="Linux">Linux
+			<input type="checkbox" name="m" value="MacOS">MacOS<br/>
 			Requisitos Mínimos: <input type="text" name="requisitosMinimos" maxlength="500" required="true"> <br/>			
 			Requisitos Recomendados: <input type="text" name="requisitosRecomendados" maxlength="500" required="true"> <br/>			
 			Nome do Fornecedor: <input type="text" name="fornecedorNome" maxlength="20" required="true"> <br/>
