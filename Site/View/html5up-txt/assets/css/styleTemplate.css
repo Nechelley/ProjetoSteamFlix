@@ -30,6 +30,19 @@
 
 .opcoesAdmin{
 	display:block;
-	width: 90%;
+	width: 100%;
 	margin:auto;
+}
+
+.opcoesAdminBotoes{
+	width:25%;
+	display: inline-block;
+	float: left;
+	margin:auto;	
+}
+
+.divTitulo{
+	display:block;
+	width: 100%;
+	margin:auto;	
 }

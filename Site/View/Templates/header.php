@@ -21,7 +21,7 @@
 	<header id="header">
 		<div class="logo container">
 			<div>
-				<h1><a href="index.php" id="logo"><img src="<?php if($ppb == "view" || $ppb == "controller"){echo "../";} ?>Arquivos/Images/logo.png" alt="SteamFlix" class="imglogo"></a></h1>
+				<h1><a href="<?php if($ppb == "view" || $ppb == "controller"){echo "../";} ?>index.php" id="logo"><img src="<?php if($ppb == "view" || $ppb == "controller"){echo "../";} ?>Arquivos/Images/logo.png" alt="SteamFlix" class="imglogo"></a></h1>
 				<p>SteamFlix</p>
 			</div>
 		</div>

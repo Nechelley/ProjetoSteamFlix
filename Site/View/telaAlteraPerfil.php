@@ -14,6 +14,7 @@
 <!-- Highlight -->
 	<section class="box highlight">
 		<div class="formulario">
+		<h1 class="titulo">Alterar Dados</h1>
 		<form action="alterarUsuario2.php" method="POST" enctype="multipart/form-data">
 			Primeiro Nome: <input type="text" name="pNome" value="<?php echo $pNome;?>" required> <br/>
 			Segundo Nome: <input type="text" name="uNome"  value="<?php echo $uNome;?>" required> <br/>

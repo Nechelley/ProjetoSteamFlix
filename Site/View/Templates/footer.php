@@ -34,8 +34,9 @@
 						</div>
 					</div>
 					<div>
-						<a href="..">						
-						</a>
+					<?php if($nivelAcesso != 1){ ?>
+						<a href="<?php if($ppb == "index"){ echo "View/";}else if($ppb == "controller"){echo "../View/" ;}?>telaLoginAdm.php">Administrador? Acesse aqui!</a>
+						<?php }?>
 					</div>
 					
 
