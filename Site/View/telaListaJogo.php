@@ -34,7 +34,7 @@
 			Requisitos Mínimos: <input type="text" name="requisitosMinimos" maxlength="500" required="true" value="<?php echo $requisitosMinimos;?>" readonly> <br/>			
 			Requisitos Recomendados: <input type="text" name="requisitosRecomendados" maxlength="500" required="true" value="<?php echo $requisitosRecomendados;?>" readonly> <br/>			
 			Nome do Fornecedor: <input type="text" name="fornecedorNome" maxlength="20" required="true" value="<?php echo $fornecedorNome;?>" readonly> <br/>
-			Email do Fornecedor: <input type="text" name="email" maxlength="45" value="<?php echo $administradorEmail;?>" readonly> <br/>
+			Email do Fornecedor: <input type="text" name="email" maxlength="45" value="<?php echo $fornecedorEmail;?>" readonly> <br/>
 			
 
 

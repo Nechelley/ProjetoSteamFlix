@@ -51,14 +51,15 @@
 
 			Requisitos Mínimos: <input type="text" name="requisitosMinimos" maxlength="500" required="true" value="<?php echo $requisitosMinimos;?>" > <br/>			
 			Requisitos Recomendados: <input type="text" name="requisitosRecomendados" maxlength="500" required="true" value="<?php echo $requisitosRecomendados;?>" > <br/>			
-			Nome do Fornecedor: <input type="text" name="fornecedorNome" maxlength="20" required="true" value="<?php echo $fornecedorNome;?>" readonly> <br/>
-			Email do Fornecedor: <input type="text" name="email" maxlength="45" value="<?php echo $administradorEmail;?>" readonly> <br/>
+			Nome do Fornecedor: <input type="text" name="fornecedorNome" maxlength="20" required="true" value="<?php echo $fornecedorNome; if($admnistradorEmail != $email){echo "readonly";} ?>" > <br/>
+			Email do Fornecedor: <input type="text" name="fornecedorEmail" maxlength="45" value="<?php echo $fornecedorEmail; if($admnistradorEmail != $email){echo "readonly";} ?>" > <br/>
 			<?php 
 				for($position = 0; $position < 5; $position++){
 					echo "Imagem".$position.": <input type='file' name='img".$position."'/> <br/>";
 				}
 			?>
 			<br/>
+			<input type="hidden" name="AdmEmail" maxlength="45" value="<?php echo $admnistradorEmail; ?>" >
 			<input type="submit" value="Enviar">
 		</form>
 		</div>

@@ -46,6 +46,11 @@ class JogoDAO{
 		if(!mysqli_query($link, $aux)) {
 			die('Não foi possível salvar2: ' . mysqli_error($link));
 		}
+
+		$query = "call REMOVE_FORNECEDORES_INATIVOS();";
+		if(!mysqli_query($link, $query)) {
+			die('Não foi possível resolver fornecedores: ' . mysqli_error($link));
+		}
 	}
 
 	public function consultar($codigo,$link){			
@@ -107,6 +112,10 @@ class JogoDAO{
 		$aux .= "('".$jogo->getImagens()[count($jogo->getImagens())-1]."',".$jogo->getCodigo().");";
 		if(!mysqli_query($link, $aux)) {
 			die('Não foi possível salvar2: ' . mysqli_error($link));
+		}
+		$query = "call REMOVE_FORNECEDORES_INATIVOS();";
+		if(!mysqli_query($link, $query)) {
+			die('Não foi possível resolver fornecedores: ' . mysqli_error($link));
 		}
 	}
 

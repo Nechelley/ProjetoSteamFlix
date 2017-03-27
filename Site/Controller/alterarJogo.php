@@ -8,6 +8,7 @@
 	include_once("../Model/jogo.php");
 	include_once("../Persist/conexao.php");
 	include_once("../Persist/jogoDAO.php");
+	include_once("../Persist/fornecedorDAO.php");
 
 	$codigo = $_POST["codigo"];
 
@@ -36,8 +37,7 @@
 		$idiomaLegenda = $row['IdiomaLegenda'];
 
 		$fornecedorNome = $row['FORNECEDOR_Nome'];
-
-		$administradorEmail = $row['ADMINISTRADOR_Email'];
+		$admnistradorEmail = $row['ADMINISTRADOR_Email'];
 
 		$descricao = $row['Descricao'];
 		$qtdJogadores = $row['QtdJogadores'];
@@ -50,6 +50,17 @@
 		$cont++;
 		$contErros = 0;
 	}
+
+	//busco no banco
+	$fornecedordao = new FornecedorDAO();
+	$resultado = $fornecedordao->consultar($fornecedorNome,$link);
+	$contErros = 1;
+	while ($row = mysqli_fetch_assoc($resultado)) {
+		$fornecedorEmail = $row['Email'];
+		$contErros = 0;
+	}
+
+
 	if($contErros == 0){
 		//arrumando data
 		$dataEntradaSistema = substr($dataEntradaSistema,8,2)."/".substr($dataEntradaSistema,5,2)."/".substr($dataEntradaSistema,0,4);

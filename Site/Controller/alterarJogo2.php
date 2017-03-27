@@ -8,6 +8,8 @@
 	include_once("../Model/jogo.php");
 	include_once("../Persist/conexao.php");
 	include_once("../Persist/jogoDAO.php");
+	include_once("../Model/fornecedor.php");
+	include_once("../Persist/fornecedorDAO.php");
 
 	$codigo = $_POST["codigo"];
 	$qtdVendida = 0;
@@ -23,7 +25,7 @@
 
 	$fornecedorNome = $_POST["fornecedorNome"];
 
-	$administradorEmail = $email;
+	$administradorEmail = $_POST["AdmEmail"];
 
 	$descricao = $_POST["descricao"];
 	$qtdJogadores = $_POST["qtdJogadores"];
@@ -97,19 +99,45 @@
 	
 
 	if($contErros == 0){
-		//cria Jogo
-		$jogo = new Jogo($codigo,$qtdVendida,$notaUsuario,$classificacaoEtaria,$precoCusto,$precoVenda,$genero,$nome,$dataLancamento,$idiomaAudio,$idiomaLegenda,$nome_imagem,$descricao,$qtdJogadores,$so,$requisitosMinimos,$requisitosRecomendados,$fornecedorNome,$administradorEmail);
-		
 		//conecta
 		$conexao = new Conexao("localhost","ADMINISTRADOR","12345","SteamFlix");
 		$link = $conexao->conectar();
 
-		$jogodao = new JogoDAO();
-		$jogodao->alterar($jogo,$link);
+		//verifico se fornecedor existe
+		$fornecedordao = new FornecedorDAO();
+		$resultado = $fornecedordao->consultar($fornecedorNome,$link);
 
-		$conexao->fechar();
-        //redireciono
-        header("Location: ../index.php");
+		while ($row = mysqli_fetch_assoc($resultado)) {
+		    $nomeF = $row['Nome'];
+		}
+
+		if(!isset($_POST["fornecedorEmail"])){//se n passou email
+			if(!isset($nomeF)){//significa q o adm achou q um fornecedor ja estava cadastrado
+				$erro[$contErros] = 'Fornecedor ainda não cadastrado.';
+				$contErros++;
+			}
+		}else{//se passou email
+			if(!isset($nomeF)){//cadastro o fornecedor
+				$fornecedor = new Fornecedor($fornecedorNome,$_POST["fornecedorEmail"]);
+				$fornecedordao->cadastrar($fornecedor,$link);
+			}
+		}
+		if($contErros == 0){
+			//cria Jogo
+			$jogo = new Jogo($codigo,$qtdVendida,$notaUsuario,$classificacaoEtaria,$precoCusto,$precoVenda,$genero,$nome,$dataLancamento,$idiomaAudio,$idiomaLegenda,$nome_imagem,$descricao,$qtdJogadores,$so,$requisitosMinimos,$requisitosRecomendados,$fornecedorNome,$administradorEmail);
+
+			$jogodao = new JogoDAO();
+			$jogodao->alterar($jogo,$link);
+
+			$conexao->fechar();
+	        //redireciono
+	        header("Location: ../index.php");
+        }
+		else{
+			//houve algum erro
+			$quemChamou = "../View/telaAlteraJogo.php";
+			include_once("../View/telaFalha.php");		
+		}
 	}
 	else{
 		//houve algum erro

@@ -8,6 +8,7 @@
 	include_once("../Model/jogo.php");
 	include_once("../Persist/conexao.php");
 	include_once("../Persist/jogoDAO.php");
+	include_once("../Persist/fornecedorDAO.php");
 
 	$codigo = $_POST["codigo"];
 
@@ -37,8 +38,6 @@
 
 		$fornecedorNome = $row['FORNECEDOR_Nome'];
 
-		$administradorEmail = $row['ADMINISTRADOR_Email'];
-
 		$descricao = $row['Descricao'];
 		$qtdJogadores = $row['QtdJogadores'];
 
@@ -48,6 +47,15 @@
 		$requisitosRecomendados = $row['RequisitosRecomendados'];
 		$img[$cont] = $row['CaminhoImagem'];
 		$cont++;
+		$contErros = 0;
+	}
+	$contErros = 1;
+	//busco no banco
+	$fornecedordao = new FornecedorDAO();
+	$resultado = $fornecedordao->consultar($fornecedorNome,$link);
+
+	while ($row = mysqli_fetch_assoc($resultado)) {
+		$fornecedorEmail = $row['Email'];
 		$contErros = 0;
 	}
 
