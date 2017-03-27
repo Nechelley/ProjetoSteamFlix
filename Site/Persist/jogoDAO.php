@@ -4,13 +4,13 @@ class JogoDAO{
 		//ajustando o sistema de SO
 		$aux = "(";
 		if(($jogo->getSistemasOperacionais()[0] && $jogo->getSistemasOperacionais()[1]) && $jogo->getSistemasOperacionais()[2]){//wlm
-			$aux .= "'Windows','Linux','MacOS'";
+			$aux .= "'Windows,Linux,MacOS'";
 		}else if($jogo->getSistemasOperacionais()[0] && $jogo->getSistemasOperacionais()[1]){//wl
-			$aux .= "'Windows','Linux'";
+			$aux .= "'Windows,Linux'";
 		}else if($jogo->getSistemasOperacionais()[1] && $jogo->getSistemasOperacionais()[2]){//lm
-			$aux .= "'Linux','MacOS'";
+			$aux .= "'Linux,MacOS'";
 		}else if($jogo->getSistemasOperacionais()[0] && $jogo->getSistemasOperacionais()[2]){//wm
-			$aux .= "'Windows','MacOS'";
+			$aux .= "'Windows,MacOS'";
 		}else if($jogo->getSistemasOperacionais()[0]){//w
 			$aux .= "'Windows'";
 		}else if($jogo->getSistemasOperacionais()[1]){//l
@@ -66,13 +66,13 @@ class JogoDAO{
 		//ajustando o sistema de SO
 		$aux = "(";
 		if(($jogo->getSistemasOperacionais()[0] && $jogo->getSistemasOperacionais()[1]) && $jogo->getSistemasOperacionais()[2]){//wlm
-			$aux .= "'Windows','Linux','MacOS'";
+			$aux .= "'Windows,Linux,MacOS'";
 		}else if($jogo->getSistemasOperacionais()[0] && $jogo->getSistemasOperacionais()[1]){//wl
-			$aux .= "'Windows','Linux'";
+			$aux .= "'Windows,Linux'";
 		}else if($jogo->getSistemasOperacionais()[1] && $jogo->getSistemasOperacionais()[2]){//lm
-			$aux .= "'Linux','MacOS'";
+			$aux .= "'Linux,MacOS'";
 		}else if($jogo->getSistemasOperacionais()[0] && $jogo->getSistemasOperacionais()[2]){//wm
-			$aux .= "'Windows','MacOS'";
+			$aux .= "'Windows,MacOS'";
 		}else if($jogo->getSistemasOperacionais()[0]){//w
 			$aux .= "'Windows'";
 		}else if($jogo->getSistemasOperacionais()[1]){//l
@@ -130,6 +130,11 @@ class JogoDAO{
 			WHERE CodigoJogo = ".$codigo.";"; 
 		if (!mysqli_query($link,$query)) {
 		    die("Não foi possível deletar: ".mysqli_error($link));
+		}
+
+		$query = "call REMOVE_FORNECEDORES_INATIVOS();";
+		if(!mysqli_query($link, $query)) {
+			die('Não foi possível resolver fornecedores: ' . mysqli_error($link));
 		}
 	}
 
