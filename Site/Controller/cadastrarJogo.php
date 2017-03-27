@@ -136,16 +136,14 @@
 		}
 		else{
 			//houve algum erro
-			foreach ($erro as $e) {
-				echo $r."<br>";
-			}
+			$quemChamou = "../View/telaCadastroJogo.php";
+			include_once("../View/telaFalha.php");		
 		}
 	}
 	else{
 		//houve algum erro
-		foreach ($erro as $e) {
-			echo $r."<br>";
-		}
+		$quemChamou = "../View/telaCadastroJogo.php";
+		include_once("../View/telaFalha.php");	
 	}	
 ?>
 

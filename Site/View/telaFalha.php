@@ -2,7 +2,7 @@
 	$ppb = "controller";
 	$titulo = "Erro";
 	include_once("Templates/header.php");
-	$nav = "Home";
+	$nav = "Erro";
 	include_once("Templates/nav.php");
 ?>	
 <!-- Main -->

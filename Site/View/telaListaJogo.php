@@ -2,7 +2,7 @@
 	$ppb = "controller";
 	$titulo = "Cadastro Jogo";
 	include_once("Templates/header.php");
-	$nav = "Home";
+	$nav = "Perfil";
 	include_once("Templates/nav.php");
 ?>
 <!-- Main -->

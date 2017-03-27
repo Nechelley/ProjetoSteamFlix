@@ -113,9 +113,8 @@
 	}
 	else{
 		//houve algum erro
-		foreach ($erro as $e) {
-			echo $r."<br>";
-		}
+		$quemChamou = "../View/telaBuscaJogoParaAlterar.php";
+		include_once("../View/telaFalha.php");		
 	}	
 ?>
 
