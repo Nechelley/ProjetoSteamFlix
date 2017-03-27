@@ -90,7 +90,7 @@
 				//gera nome da imagem
 				$nome_imagem[$i] = time()."_".rand(1,50000).".".$ext[1];
 				//caminho
-				$caminho_imagem = "../Arquivos/FotosPerfil/".$nome_imagem[$i];
+				$caminho_imagem = "../Arquivos/FotosJogo/".$nome_imagem[$i];
 				//Faz upload
 				move_uploaded_file($img[$i]['tmp_name'], $caminho_imagem);
 			}

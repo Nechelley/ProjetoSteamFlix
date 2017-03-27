@@ -38,11 +38,11 @@
 			
 
 			
-			Imagens: <img class="fotoPerfil" src="../Arquivos/FotosPerfil/<?php echo $img[0];?>" alt="Foto perfil"> <br/><br/>
-			Imagens: <img class="fotoPerfil" src="../Arquivos/FotosPerfil/<?php echo $img[1];?>" alt="Foto perfil"> <br/><br/>	
-			Imagens: <img class="fotoPerfil" src="../Arquivos/FotosPerfil/<?php echo $img[2];?>" alt="Foto perfil"> <br/><br/>	
-			Imagens: <img class="fotoPerfil" src="../Arquivos/FotosPerfil/<?php echo $img[3];?>" alt="Foto perfil"> <br/><br/>	
-			Imagens: <img class="fotoPerfil" src="../Arquivos/FotosPerfil/<?php echo $img[4];?>" alt="Foto perfil"> <br/><br/>		
+			Imagens: <img class="fotoPerfil" src="../Arquivos/FotosJogo/<?php echo $img[0];?>" alt="Foto perfil"> <br/><br/>
+			Imagens: <img class="fotoPerfil" src="../Arquivos/FotosJogo/<?php echo $img[1];?>" alt="Foto perfil"> <br/><br/>	
+			Imagens: <img class="fotoPerfil" src="../Arquivos/FotosJogo/<?php echo $img[2];?>" alt="Foto perfil"> <br/><br/>	
+			Imagens: <img class="fotoPerfil" src="../Arquivos/FotosJogo/<?php echo $img[3];?>" alt="Foto perfil"> <br/><br/>	
+			Imagens: <img class="fotoPerfil" src="../Arquivos/FotosJogo/<?php echo $img[4];?>" alt="Foto perfil"> <br/><br/>		
 		</form>
 		</div>
 	</section>
