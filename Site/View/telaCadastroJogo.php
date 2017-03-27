@@ -22,7 +22,7 @@
 		<h1 class="titulo">Cadastro de Jogo</h1>
 		<div class="formulario">
 		<form action="../Controller/cadastrarJogo.php" method="POST" enctype="multipart/form-data">
-			Código do Jogo: <input type="text" name="codigo" maxlength="20" required="true"> <br/>
+			Código do Jogo: <input type="text" name="codigo" maxlength="20" required="true" autofocus="true"> <br/>
 			Classificacao Etária: <input type="text" name="classificacaoEtaria" maxlength="20" required="true"> <br/>
 			Preço de Custo: <input type="text" name="precoCusto" maxlength="10" required="true"> <br/>
 			Preço de Venda: <input type="text" name="precoVenda" maxlength="10" required="true"> <br/>

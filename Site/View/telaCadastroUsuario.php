@@ -22,7 +22,7 @@
 		<h1 class="titulo">Cadastro</h1>
 		<div class="formulario">
 		<form action="../Controller/cadastrarUsuario.php" method="POST" enctype="multipart/form-data">
-			Primeiro Nome: <input type="text" name="pNome" maxlength="20" required="true"> <br/>
+			Primeiro Nome: <input type="text" name="pNome" maxlength="20" required="true" autofocus="true"> <br/>
 			Segundo Nome: <input type="text" name="uNome" maxlength="20" required="true"> <br/>
 			Email: <input type="text" name="email" maxlength="45" required="true"> <br/>
 			Senha: <input type="password" name="senha" maxlength="100" required="true"> <br/>

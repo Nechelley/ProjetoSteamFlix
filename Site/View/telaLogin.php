@@ -23,7 +23,7 @@
 		<div class="formulario">		
 			<h1 class="titulo">Login</h1>	
 			<form action="../Controller/logarUsuario.php" method="POST">
-				Email: <input type="text" name="email" maxlength="45" required="true"> <br/>
+				Email: <input type="text" name="email" maxlength="45" required="true" autofocus="true"> <br/>
 				Senha: <input type="password" name="senha" maxlength="100" required="true"> <br/>
 				<input type="submit" value="Enviar">
 			</form>

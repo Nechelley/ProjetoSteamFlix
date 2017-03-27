@@ -37,8 +37,7 @@
 			Email do Fornecedor: <input type="text" name="email" maxlength="45" value="<?php echo $fornecedorEmail;?>" readonly> <br/>
 			
 
-
-			//exibir as imagens aqui
+			
 			Imagens: <img class="fotoPerfil" src="../Arquivos/FotosPerfil/<?php echo $img[0];?>" alt="Foto perfil"> <br/><br/>
 			Imagens: <img class="fotoPerfil" src="../Arquivos/FotosPerfil/<?php echo $img[1];?>" alt="Foto perfil"> <br/><br/>	
 			Imagens: <img class="fotoPerfil" src="../Arquivos/FotosPerfil/<?php echo $img[2];?>" alt="Foto perfil"> <br/><br/>	

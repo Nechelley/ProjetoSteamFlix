@@ -16,7 +16,7 @@
 		<div class="formulario">
 		<h1 class="titulo">Alterar Dados</h1>
 		<form action="alterarUsuario2.php" method="POST" enctype="multipart/form-data">
-			Primeiro Nome: <input type="text" name="pNome" value="<?php echo $pNome;?>" required> <br/>
+			Primeiro Nome: <input type="text" name="pNome" value="<?php echo $pNome;?>" autofocus="true" required> <br/>
 			Segundo Nome: <input type="text" name="uNome"  value="<?php echo $uNome;?>" required> <br/>
 			Data de Nascimento: <input type="text" name="dataNascimento"  value="<?php echo $data;?>" required> <br/>
 			Nova Senha(opcional): <input type="password" name="senhaNova"> <br/>

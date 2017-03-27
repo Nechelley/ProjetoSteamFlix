@@ -48,23 +48,30 @@
 		$img[$cont] = $row['CaminhoImagem'];
 		$cont++;
 		$contErros = 0;
-	}
-	$contErros = 1;
-	//busco no banco
-	$fornecedordao = new FornecedorDAO();
-	$resultado = $fornecedordao->consultar($fornecedorNome,$link);
-
-	while ($row = mysqli_fetch_assoc($resultado)) {
-		$fornecedorEmail = $row['Email'];
-		$contErros = 0;
-	}
+	}	
 
 	if($contErros == 0){
-		//arrumando data
-		$dataLancamento = substr($dataLancamento,8,2)."/".substr($dataLancamento,5,2)."/".substr($dataLancamento,0,4);
-		//arrumando data
-		$dataEntradaSistema = substr($dataEntradaSistema,8,2)."/".substr($dataEntradaSistema,5,2)."/".substr($dataEntradaSistema,0,4);
-		include_once("../View/telaListaJogo.php");
+		$contErros = 1;
+		//busco no banco
+		$fornecedordao = new FornecedorDAO();
+		$resultado = $fornecedordao->consultar($fornecedorNome,$link);
+
+		while ($row = mysqli_fetch_assoc($resultado)) {
+			$fornecedorEmail = $row['Email'];
+			$contErros = 0;
+		}
+		if($contErros == 0){
+				//arrumando data
+			$dataLancamento = substr($dataLancamento,8,2)."/".substr($dataLancamento,5,2)."/".substr($dataLancamento,0,4);
+			//arrumando data
+			$dataEntradaSistema = substr($dataEntradaSistema,8,2)."/".substr($dataEntradaSistema,5,2)."/".substr($dataEntradaSistema,0,4);
+			include_once("../View/telaListaJogo.php");	
+		}
+		else{
+			$erro[$contErros-1] = "Esse jogo não está cadastrado no sistema!";
+			$quemChamou = "../View/telaBuscaJogoParaListar.php";
+			include_once("../View/telaFalha.php");			
+		}
 	}
 	else{
 		$erro[$contErros-1] = "Esse jogo não está cadastrado no sistema!";
